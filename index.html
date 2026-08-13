@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#home" class="nav-brand" id="nav-brand-text">MY NAME</a>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#project1" class="nav-link" id="nav-proj1">Project 1</a>
+                <a href="#project2" class="nav-link" id="nav-proj2">Project 2</a>
+                <a href="#project3" class="nav-link" id="nav-proj3">Project 3</a>
+                <a href="#project4" class="nav-link" id="nav-proj4">Project 4</a>
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <input type="file" id="global-file-input" accept="image/jpeg,image/png,image/webp,image/jpg" style="display: none;">
+
+    <main id="app-content">
+
+        <section id="home" class="page-section active">
+            <div class="hero-container">
+                <div class="hero-header fade-in">
+                    <h1 class="artist-name" id="home-artist-name">MY NAME</h1>
+                    <p class="artist-subtitle" id="home-artist-subtitle">PHOTOGRAPHY PORTFOLIO</p>
+                </div>
+                <div class="hero-photo-wrapper fade-in">
+                    <div class="photo-slot hero-slot" id="hero-slot" data-slot-id="hero">
+                        <div class="slot-placeholder">
+                            <span class="plus-icon">+</span>
+                            <span class="add-text">ADD FEATURED PHOTO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project1" class="page-section">
+            <div class="container">
+                <header class="project-header">
+                    <h1 class="project-title" id="p1-title-heading">Project 1</h1>
+                    <p class="project-description" id="p1-desc-heading">Project description goes here.</p>
+                </header>
+                <div class="portfolio-grid" id="p1-grid"></div>
+            </div>
+        </section>
+
+        <section id="project2" class="page-section">
+            <div class="container">
+                <header class="project-header">
+                    <h1 class="project-title" id="p2-title-heading">Project 2</h1>
+                    <p class="project-description" id="p2-desc-heading">Project description goes here.</p>
+                </header>
+                <div class="portfolio-grid" id="p2-grid"></div>
+            </div>
+        </section>
+
+        <section id="project3" class="page-section">
+            <div class="container">
+                <header class="project-header">
+                    <h1 class="project-title" id="p3-title-heading">Project 3</h1>
+                    <p class="project-description" id="p3-desc-heading">Project description goes here.</p>
+                </header>
+                <div class="portfolio-grid" id="p3-grid"></div>
+            </div>
+        </section>
+
+        <section id="project4" class="page-section">
+            <div class="container">
+                <header class="project-header">
+                    <h1 class="project-title" id="p4-title-heading">Project 4</h1>
+                    <p class="project-description" id="p4-desc-heading">Project description goes here.</p>
+                </header>
+                <div class="portfolio-grid" id="p4-grid"></div>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text-column">
+                        <h1 class="about-name" id="about-artist-name">MY NAME</h1>
+                        <div class="about-story" id="about-story-text">
+                            <p>Write your detailed artist statement, personal background, photo philosophy, and college ambitions here.</p>
+                        </div>
+                    </div>
+                    <div class="about-photo-column">
+                        <div class="photo-entry">
+                            <h3 class="entry-title" id="about-photo-title">MY NAME</h3>
+                            <div class="photo-slot" data-slot-id="about-portrait">
+                                <div class="slot-placeholder">
+                                    <span class="plus-icon">+</span>
+                                    <span class="add-text">ADD PORTRAIT PHOTO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <h1 class="contact-main-heading">CONTACT</h1>
+                    <div class="contact-content">
+                        <p class="contact-statement" id="contact-statement-text">For inquiries, college admissions review, or collaborations, please reach out below.</p>
+                        
+                        <div class="contact-details-grid">
+                            <div class="contact-item">
+                                <span class="contact-label">EMAIL</span>
+                                <a href="mailto:email@example.com" class="contact-value" id="contact-email">your.email@example.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">PHONE</span>
+                                <span class="contact-value" id="contact-phone">+1 (555) 000-0000</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">LOCATION</span>
+                                <span class="contact-value" id="contact-location">City, State / Region</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">INSTAGRAM</span>
+                                <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-value" id="contact-instagram">@yourhandle</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">WEBSITE</span>
+                                <a href="#" class="contact-value" id="contact-website">www.yourportfolio.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">INQUIRIES</span>
+                                <span class="contact-value" id="contact-inquiries">Available for freelance & academic evaluations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="footer-year"></span> <span id="footer-artist-name">MY NAME</span>. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        /* =======================================================================
+        EDIT YOUR WEBSITE TEXT HERE!
+        Change any text inside the quotes below to update your live website.
+        =======================================================================
+        */
+        const PORTFOLIO_CONFIG = {
+            artistName: "YOUR NAME HERE",
+            subtitle: "PHOTOGRAPHY PORTFOLIO",
+
+            projects: {
+                project1: {
+                    name: "Project 1 Title",
+                    description: "Write your project description here.",
+                    photos: [
+                        { title: "Photo 1 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 2 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 3 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 4 Title", subtext: "Location / Camera Details" }
+                    ]
+                },
+                project2: {
+                    name: "Project 2 Title",
+                    description: "Write your project description here.",
+                    photos: [
+                        { title: "Photo 1 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 2 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 3 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 4 Title", subtext: "Location / Camera Details" }
+                    ]
+                },
+                project3: {
+                    name: "Project 3 Title",
+                    description: "Write your project description here.",
+                    photos: [
+                        { title: "Photo 1 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 2 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 3 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 4 Title", subtext: "Location / Camera Details" }
+                    ]
+                },
+                project4: {
+                    name: "Project 4 Title",
+                    description: "Write your project description here.",
+                    photos: [
+                        { title: "Photo 1 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 2 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 3 Title", subtext: "Location / Camera Details" },
+                        { title: "Photo 4 Title", subtext: "Location / Camera Details" }
+                    ]
+                }
+            },
+
+            about: {
+                name: "YOUR NAME HERE",
+                story: "Write your detailed artist statement, personal background, photography philosophy, and college ambitions here."
+            },
+
+            contact: {
+                statement: "For portfolio reviews, university inquiries, or artistic collaborations, please get in touch.",
+                email: "your.email@example.com",
+                phone: "+1 (555) 000-0000",
+                location: "City, State",
+                instagram: "@yourhandle",
+                website: "www.yourportfolio.com",
+                inquiries: "Open for Academic Admissions & Artistic Reviews"
+            }
+        };
+
+        /* =======================================================================
+        APPLICATION ENGINE (Renders text from PORTFOLIO_CONFIG above)
+        =======================================================================
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            let activeSlotElement = null;
+            const fileInput = document.getElementById('global-file-input');
+
+            // Set current year in footer
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+            // Populate text content from PORTFOLIO_CONFIG
+            function populateTextContent() {
+                document.getElementById('nav-brand-text').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-subtitle').textContent = PORTFOLIO_CONFIG.subtitle;
+                document.getElementById('footer-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+
+                document.getElementById('nav-proj1').textContent = PORTFOLIO_CONFIG.projects.project1.name;
+                document.getElementById('nav-proj2').textContent = PORTFOLIO_CONFIG.projects.project2.name;
+                document.getElementById('nav-proj3').textContent = PORTFOLIO_CONFIG.projects.project3.name;
+                document.getElementById('nav-proj4').textContent = PORTFOLIO_CONFIG.projects.project4.name;
+
+                ['project1', 'project2', 'project3', 'project4'].forEach((pKey, index) => {
+                    const pNum = index + 1;
+                    const projData = PORTFOLIO_CONFIG.projects[pKey];
+                    
+                    document.getElementById(`p${pNum}-title-heading`).textContent = projData.name;
+                    document.getElementById(`p${pNum}-desc-heading`).textContent = projData.description;
+
+                    const gridContainer = document.getElementById(`p${pNum}-grid`);
+                    gridContainer.innerHTML = '';
+
+                    projData.photos.forEach((photo, pIdx) => {
+                        const entry = document.createElement('div');
+                        entry.className = 'photo-entry';
+                        entry.innerHTML = `
+                            <h3 class="entry-title">${photo.title}</h3>
+                            <div class="photo-slot" data-slot-id="${pKey}-slot-${pIdx}">
+                                <div class="slot-placeholder">
+                                    <span class="plus-icon">+</span>
+                                    <span class="add-text">ADD PHOTO</span>
+                                </div>
+                            </div>
+                            <p class="entry-subtext">${photo.subtext}</p>
+                        `;
+                        gridContainer.appendChild(entry);
+                    });
+
+                    const fifthSlot = document.createElement('div');
+                    fifthSlot.className = 'photo-entry add-slot-entry';
+                    fifthSlot.innerHTML = `
+                        <h3 class="entry-title">New Entry</h3>
+                        <div class="photo-slot" data-slot-id="${pKey}-slot-4">
+                            <div class="slot-placeholder">
+                                <span class="plus-icon">+</span>
+                                <span class="add-text">ADD PHOTO</span>
+                            </div>
+                        </div>
+                        <p class="entry-subtext">Click to upload photo</p>
+                    `;
+                    gridContainer.appendChild(fifthSlot);
+                });
+
+                document.getElementById('about-artist-name').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-photo-title').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-story-text').innerHTML = `<p>${PORTFOLIO_CONFIG.about.story.replace(/\n\n/g, '</p><p>')}</p>`;
+
+                document.getElementById('contact-statement-text').textContent = PORTFOLIO_CONFIG.contact.statement;
+                document.getElementById('contact-email').textContent = PORTFOLIO_CONFIG.contact.email;
+                document.getElementById('contact-email').href = `mailto:${PORTFOLIO_CONFIG.contact.email}`;
+                document.getElementById('contact-phone').textContent = PORTFOLIO_CONFIG.contact.phone;
+                document.getElementById('contact-location').textContent = PORTFOLIO_CONFIG.contact.location;
+                document.getElementById('contact-instagram').textContent = PORTFOLIO_CONFIG.contact.instagram;
+                document.getElementById('contact-website').textContent = PORTFOLIO_CONFIG.contact.website;
+                document.getElementById('contact-inquiries').textContent = PORTFOLIO_CONFIG.contact.inquiries;
+            }
+
+            populateTextContent();
+
+            // Navigation SPA routing
+            const pageSections = document.querySelectorAll('.page-section');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            function handleRoute() {
+                const hash = window.location.hash || '#home';
+                const targetId = hash.replace('#', '');
+
+                pageSections.forEach(section => {
+                    section.classList.toggle('active', section.id === targetId);
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navMenu.classList.remove('open');
+            }
+
+            window.addEventListener('hashchange', handleRoute);
+            handleRoute();
+
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+
+            // Photo Uploader
+            document.body.addEventListener('click', (e) => {
+                const slot = e.target.closest('.photo-slot');
+                if (slot) {
+                    activeSlotElement = slot;
+                    fileInput.click();
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file && activeSlotElement) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        activeSlotElement.innerHTML = '';
+                        activeSlotElement.classList.add('has-image');
+
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.alt = "Uploaded Portfolio Photo";
+                        img.className = "uploaded-photo";
+
+                        activeSlotElement.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+                fileInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM & CSS VARIABLES
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --primary-color: #0d2818; /* Deep Forest Green / Dark Emerald */
+    --primary-hover: #163f27; /* Hover Green */
+    --secondary-neutral: #f4f1ea; /* Warm Ivory / Neutral Accent */
+    --background-color: #fcfbf9; /* Subtle Warm Off-White */
+    --text-color: #000000; /* STRICT REQUIREMENT: ALL TEXT MUST BE BLACK */
+    --border-color: #e2ded6; /* Subtle Section Divider */
+    --placeholder-bg: #f0ebe1; /* Photo Slot Neutral Placeholder */
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Transitions & Structure */
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    --max-width: 1280px;
+}
+
+/* ==========================================================================
+   2. GLOBAL RESETS & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--background-color);
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-color); /* Primary Body Text: Black */
+    background-color: var(--background-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Force all headings, paragraphs, links, and spans to remain black */
+h1, h2, h3, h4, h5, h6, p, a, span, label, div {
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR
+   ========================================================================== */
+.site-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(252, 251, 249, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobile-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   4. SPA ROUTING SECTION DISPLAY
+   ========================================================================== */
+.page-section {
+    display: none;
+    padding: 4rem 2rem;
+    min-height: calc(100vh - 160px);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   5. HOMEPAGE HERO
+   ========================================================================== */
+.hero-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.hero-header {
+    margin-bottom: 3rem;
+}
+
+.artist-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.artist-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.hero-photo-wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* ==========================================================================
+   6. PORTFOLIO GRID & PHOTO SLOTS (ADAPTIVE ASPECT RATIO)
+   ========================================================================== */
+.project-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3.5rem 2.5rem;
+    align-items: start;
+}
+
+.photo-entry {
+    display: flex;
+    flex-direction: column;
+}
+
+.entry-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.entry-subtext {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+/* Dynamic Aspect Ratio Slot System */
+.photo-slot {
+    width: 100%;
+    min-height: 380px; /* Base vertical height before photo upload */
+    background-color: var(--placeholder-bg);
+    border: 1px dashed var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+}
+
+.hero-slot {
+    min-height: 520px;
+}
+
+.photo-slot:hover {
+    background-color: var(--secondary-neutral);
+    border-style: solid;
+}
+
+.photo-slot.has-image {
+    min-height: auto; /* Dynamic resize based on uploaded aspect ratio */
+    background-color: transparent;
+    border: none;
+}
+
+.slot-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+}
+
+.plus-icon {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.add-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Uploaded Image behavior - Natural Aspect Ratio Preserved */
+.uploaded-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* Prevents distortion */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-slot:hover .uploaded-photo {
+    transform: scale(1.015);
+}
+
+/* Highlight the explicit 5th "Add Photo" slot */
+.add-slot-entry .photo-slot {
+    background-color: var(--secondary-neutral);
+}
+
+/* ==========================================================================
+   7. ABOUT ME PAGE
+   ========================================================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.about-name {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.about-story p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   8. CONTACT PAGE
+   ========================================================================== */
+.contact-wrapper {
+    max-width: 800px;
+    margin: 2rem auto 0 auto;
+}
+
+.contact-main-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 1rem;
+}
+
+.contact-statement {
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+}
+
+.contact-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.contact-value {
+    font-size: 1.05rem;
+}
+
+a.contact-value:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   9. FOOTER & ACCESSIBILITY
+   ========================================================================== */
+.site-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Focus States for Keyboard Navigation */
+a:focus-visible, button:focus-visible, .photo-slot:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 868px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-slot {
+        min-height: 350px;
+    }
+}
