@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        /* Base Visibility Fixes */
         .page-section { display: none; }
         .page-section.active { display: block !important; }
         
+        /* Photo Slot Styles */
         .photo-slot {
             width: 100%;
             min-height: 280px;
@@ -43,16 +45,16 @@
 
     <header class="site-header">
         <div class="header-container">
-            <a href="#home" class="nav-brand" id="nav-brand-text">MAKARIY LOMYKIN</a>
+            <a href="#home" class="nav-brand">MAKARIY LOMYKIN</a>
             <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
             <nav class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#project1" class="nav-link" id="nav-proj1">01 — Where Light Finds Form</a>
-                <a href="#project2" class="nav-link" id="nav-proj2">02 — A Study in Color</a>
-                <a href="#project3" class="nav-link" id="nav-proj3">03 — Quiet Observations</a>
-                <a href="#project4" class="nav-link" id="nav-proj4">04 — Between the Seen and Unseen</a>
+                <a href="#project1" class="nav-link">01 — Where Light Finds Form</a>
+                <a href="#project2" class="nav-link">02 — A Study in Color</a>
+                <a href="#project3" class="nav-link">03 — Quiet Observations</a>
+                <a href="#project4" class="nav-link">04 — Between the Seen and Unseen</a>
                 <a href="#about" class="nav-link">About Me</a>
                 <a href="#contact" class="nav-link">Inquiries</a>
             </nav>
@@ -64,11 +66,11 @@
         <section id="home" class="page-section active">
             <div class="hero-container">
                 <div class="hero-header fade-in">
-                    <h1 class="artist-name" id="home-artist-name">MAKARIY LOMYKIN</h1>
-                    <p class="artist-subtitle" id="home-artist-subtitle">PHOTOGRAPHY PORTFOLIO</p>
+                    <h1 class="artist-name">MAKARIY LOMYKIN</h1>
+                    <p class="artist-subtitle">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper fade-in">
-                    <div class="photo-slot hero-slot" id="hero-slot">
+                    <div class="photo-slot hero-slot">
                         <span class="placeholder-frame-text">FEATURED WORK</span>
                     </div>
                 </div>
@@ -78,40 +80,127 @@
         <section id="project1" class="page-section">
             <div class="container">
                 <header class="project-header">
-                    <h1 class="project-title" id="p1-title-heading"></h1>
-                    <p class="project-description" id="p1-desc-heading"></p>
+                    <h1 class="project-title">01 — Where Light Finds Form</h1>
+                    <p class="project-description">A study of light, structure, and natural form, exploring how ordinary environments can become visually compelling through perspective, composition, and timing.</p>
                 </header>
-                <div class="portfolio-grid" id="p1-grid"></div>
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Light Study 1</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">LIGHT STUDY 1</span></div>
+                        <p class="entry-subtext">Atlantic City, NJ</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Structural Form</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">STRUCTURAL FORM</span></div>
+                        <p class="entry-subtext">Composition & Shadow</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Natural Geometry</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">NATURAL GEOMETRY</span></div>
+                        <p class="entry-subtext">Natural Geometry</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Perspective Exposure</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">PERSPECTIVE EXPOSURE</span></div>
+                        <p class="entry-subtext">Atmospheric Exposure</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="project2" class="page-section">
             <div class="container">
                 <header class="project-header">
-                    <h1 class="project-title" id="p2-title-heading"></h1>
-                    <p class="project-description" id="p2-desc-heading"></p>
+                    <h1 class="project-title">02 — A Study in Color</h1>
+                    <p class="project-description">An exploration of color as a visual language, using contrast, harmony, and atmosphere to shape emotion and guide the viewer through each image.</p>
                 </header>
-                <div class="portfolio-grid" id="p2-grid"></div>
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Into The Deep</h3>
+                        <div class="photo-slot">
+                            <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onerror="this.style.display='none';">
+                            <span class="placeholder-frame-text">INTO THE DEEP</span>
+                        </div>
+                        <p class="entry-subtext">Atmospheric Tone</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Color Harmony</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">COLOR HARMONY</span></div>
+                        <p class="entry-subtext">Visual Study</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Tonal Gradient</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">TONAL GRADIENT</span></div>
+                        <p class="entry-subtext">Environmental Color</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Saturated Depth</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">SATURATED DEPTH</span></div>
+                        <p class="entry-subtext">Light & Hue</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="project3" class="page-section">
             <div class="container">
                 <header class="project-header">
-                    <h1 class="project-title" id="p3-title-heading"></h1>
-                    <p class="project-description" id="p3-desc-heading"></p>
+                    <h1 class="project-title">03 — Quiet Observations</h1>
+                    <p class="project-description">A collection of moments often overlooked, focusing on the subtle details of people, places, and everyday environments that reveal something beyond the surface.</p>
                 </header>
-                <div class="portfolio-grid" id="p3-grid"></div>
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Overlooked Spaces</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">OVERLOOKED SPACES</span></div>
+                        <p class="entry-subtext">Subtle Perspective</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Everyday Detail</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">EVERYDAY DETAIL</span></div>
+                        <p class="entry-subtext">Environmental Study</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Still Moment</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">STILL MOMENT</span></div>
+                        <p class="entry-subtext">Candid Observation</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Transient Light</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">TRANSIENT LIGHT</span></div>
+                        <p class="entry-subtext">Quiet Atmosphere</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="project4" class="page-section">
             <div class="container">
                 <header class="project-header">
-                    <h1 class="project-title" id="p4-title-heading"></h1>
-                    <p class="project-description" id="p4-desc-heading"></p>
+                    <h1 class="project-title">04 — Between the Seen and Unseen</h1>
+                    <p class="project-description">An exploration of atmosphere, ambiguity, and emotion, using photography to capture moments that invite interpretation rather than provide a single answer.</p>
                 </header>
-                <div class="portfolio-grid" id="p4-grid"></div>
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Atmospheric Emotion</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">ATMOSPHERIC EMOTION</span></div>
+                        <p class="entry-subtext">Atmospheric Emotion</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Shadow and Veil</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">SHADOW AND VEIL</span></div>
+                        <p class="entry-subtext">Visual Interpretation</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Abstract Horizon</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">ABSTRACT HORIZON</span></div>
+                        <p class="entry-subtext">Coastal Atmosphere</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Unseen Perspective</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">UNSEEN PERSPECTIVE</span></div>
+                        <p class="entry-subtext">Fine Art Study</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -119,13 +208,15 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="about-text-column">
-                        <h1 class="about-name" id="about-artist-name"></h1>
-                        <div class="about-story" id="about-story-text"></div>
+                        <h1 class="about-name">MAKARIY LOMYKIN</h1>
+                        <div class="about-story">
+                            <p>I am a photographer based in Atlantic City, New Jersey, dedicated to exploring natural forms, atmospheric color, and quiet everyday moments. My work focuses on light, structure, and emotional resonance through visual storytelling, currently compiled for university photography program admissions.</p>
+                        </div>
                     </div>
                     <div class="about-photo-column">
                         <div class="photo-entry">
-                            <h3 class="entry-title" id="about-photo-title"></h3>
-                            <div class="photo-slot" id="about-portrait-slot">
+                            <h3 class="entry-title">MAKARIY LOMYKIN</h3>
+                            <div class="photo-slot">
                                 <span class="placeholder-frame-text">PORTRAIT</span>
                             </div>
                         </div>
@@ -139,24 +230,24 @@
                 <div class="contact-wrapper">
                     <h1 class="contact-main-heading">INQUIRIES</h1>
                     <div class="contact-content">
-                        <p class="contact-statement" id="contact-statement-text"></p>
+                        <p class="contact-statement">Interested in my work or looking to connect? I welcome opportunities to collaborate, exhibit, and continue exploring photography through new perspectives.</p>
                         
                         <div class="contact-details-grid">
                             <div class="contact-item">
                                 <span class="contact-label">EMAIL</span>
-                                <a href="" class="contact-value" id="contact-email"></a>
+                                <a href="mailto:makariylo12@gmail.com" class="contact-value">makariylo12@gmail.com</a>
                             </div>
                             <div class="contact-item">
                                 <span class="contact-label">PHONE</span>
-                                <a href="" class="contact-value" id="contact-phone"></a>
+                                <a href="tel:+19296159374" class="contact-value">+1 (929) 615-9374</a>
                             </div>
                             <div class="contact-item">
                                 <span class="contact-label">LOCATION</span>
-                                <span class="contact-value" id="contact-location"></span>
+                                <span class="contact-value">Atlantic City, New Jersey</span>
                             </div>
                             <div class="contact-item">
                                 <span class="contact-label">INSTAGRAM</span>
-                                <a href="" target="_blank" rel="noopener" class="contact-value" id="contact-instagram"></a>
+                                <a href="https://instagram.com/shot.by1055" target="_blank" rel="noopener" class="contact-value">@shot.by1055</a>
                             </div>
                         </div>
                     </div>
@@ -167,93 +258,14 @@
     </main>
 
     <footer class="site-footer">
-        <p>© <span id="footer-year"></span> <span id="footer-artist-name"></span>. All Rights Reserved.</p>
+        <p>© <span id="footer-year">2026</span> MAKARIY LOMYKIN. All Rights Reserved.</p>
     </footer>
-
-    <script src="config.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-            function cleanTitleFromFile(filename) {
-                if (!filename) return "Untitled";
-                return filename.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
-            }
-
-            function populateContent() {
-                if (typeof PORTFOLIO_CONFIG === 'undefined') return;
-
-                document.getElementById('nav-brand-text').textContent = PORTFOLIO_CONFIG.artistName;
-                document.getElementById('home-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
-                document.getElementById('home-artist-subtitle').textContent = PORTFOLIO_CONFIG.subtitle;
-                document.getElementById('footer-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
-
-                document.getElementById('nav-proj1').textContent = PORTFOLIO_CONFIG.projects.project1.name;
-                document.getElementById('nav-proj2').textContent = PORTFOLIO_CONFIG.projects.project2.name;
-                document.getElementById('nav-proj3').textContent = PORTFOLIO_CONFIG.projects.project3.name;
-                document.getElementById('nav-proj4').textContent = PORTFOLIO_CONFIG.projects.project4.name;
-
-                // Hero Photo
-                const heroSlot = document.getElementById('hero-slot');
-                if (PORTFOLIO_CONFIG.featuredHomePhoto) {
-                    heroSlot.innerHTML = `<img src="${encodeURIComponent(PORTFOLIO_CONFIG.featuredHomePhoto)}" alt="Featured Photo">`;
-                }
-
-                // Project Grids
-                ['project1', 'project2', 'project3', 'project4'].forEach((pKey, index) => {
-                    const pNum = index + 1;
-                    const projData = PORTFOLIO_CONFIG.projects[pKey];
-                    
-                    document.getElementById(`p${pNum}-title-heading`).textContent = projData.name;
-                    document.getElementById(`p${pNum}-desc-heading`).textContent = projData.description;
-
-                    const gridContainer = document.getElementById(`p${pNum}-grid`);
-                    gridContainer.innerHTML = '';
-
-                    projData.photos.forEach((photoObj) => {
-                        const titleText = cleanTitleFromFile(photoObj.file);
-                        const entry = document.createElement('div');
-                        entry.className = 'photo-entry';
-                        
-                        const encodedFileName = photoObj.file ? encodeURIComponent(photoObj.file) : '';
-
-                        entry.innerHTML = `
-                            <h3 class="entry-title">${titleText}</h3>
-                            <div class="photo-slot">
-                                ${photoObj.file ? `<img src="${encodedFileName}" alt="${titleText}" onerror="this.style.display='none';">` : ''}
-                                <span class="placeholder-frame-text">${titleText}</span>
-                            </div>
-                            <p class="entry-subtext">${photoObj.subtext}</p>
-                        `;
-                        gridContainer.appendChild(entry);
-                    });
-                });
-
-                // About Me
-                document.getElementById('about-artist-name').textContent = PORTFOLIO_CONFIG.about.name;
-                document.getElementById('about-photo-title').textContent = PORTFOLIO_CONFIG.about.name;
-                document.getElementById('about-story-text').innerHTML = `<p>${PORTFOLIO_CONFIG.about.story}</p>`;
-                
-                const aboutPortraitSlot = document.getElementById('about-portrait-slot');
-                if (PORTFOLIO_CONFIG.aboutPortraitPhoto) {
-                    aboutPortraitSlot.innerHTML = `<img src="${encodeURIComponent(PORTFOLIO_CONFIG.aboutPortraitPhoto)}" alt="Makariy Lomykin">`;
-                }
-
-                // Contact
-                document.getElementById('contact-statement-text').textContent = PORTFOLIO_CONFIG.contact.statement;
-                document.getElementById('contact-email').textContent = PORTFOLIO_CONFIG.contact.email;
-                document.getElementById('contact-email').href = `mailto:${PORTFOLIO_CONFIG.contact.email}`;
-                document.getElementById('contact-phone').textContent = PORTFOLIO_CONFIG.contact.phone;
-                document.getElementById('contact-phone').href = `tel:${PORTFOLIO_CONFIG.contact.phone.replace(/[^0-9+]/g, '')}`;
-                document.getElementById('contact-location').textContent = PORTFOLIO_CONFIG.contact.location;
-                document.getElementById('contact-instagram').textContent = PORTFOLIO_CONFIG.contact.instagram;
-                document.getElementById('contact-instagram').href = `https://instagram.com/${PORTFOLIO_CONFIG.contact.instagram.replace('@', '')}`;
-            }
-
-            populateContent();
-
-            // ROUTER
+            // Navigation Routing
             const pageSections = document.querySelectorAll('.page-section');
             const mobileToggle = document.getElementById('mobile-toggle');
             const navMenu = document.getElementById('nav-menu');
