@@ -8,6 +8,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Essential Visibility Fallbacks */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block !important;
+        }
+        
+        /* Clean Image Placeholder Framing */
+        .photo-slot {
+            width: 100%;
+            min-height: 280px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .placeholder-frame-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.4;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +56,7 @@
                 <span></span>
             </button>
             <nav class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link active">Home</a>
                 <a href="#project1" class="nav-link" id="nav-proj1">01 — Where Light Finds Form</a>
                 <a href="#project2" class="nav-link" id="nav-proj2">02 — A Study in Color</a>
                 <a href="#project3" class="nav-link" id="nav-proj3">03 — Quiet Observations</a>
@@ -33,7 +69,7 @@
 
     <main id="app-content">
 
-        <section id="home" class="page-section">
+        <section id="home" class="page-section active">
             <div class="hero-container">
                 <div class="hero-header fade-in">
                     <h1 class="artist-name" id="home-artist-name">MAKARIY LOMYKIN</h1>
@@ -41,7 +77,8 @@
                 </div>
                 <div class="hero-photo-wrapper fade-in">
                     <div class="photo-slot hero-slot" id="hero-slot">
-                        </div>
+                        <span class="placeholder-frame-text">FEATURED WORK</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -86,5 +123,258 @@
             </div>
         </section>
 
-        
+        <section id="about" class="page-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text-column">
+                        <h1 class="about-name" id="about-artist-name">MAKARIY LOMYKIN</h1>
+                        <div class="about-story" id="about-story-text">
+                            <p>I am a photographer based in Atlantic City, New Jersey, dedicated to exploring natural forms, atmospheric color, and quiet everyday moments. My work focuses on light, structure, and emotional resonance through visual storytelling, currently compiled for university photography program admissions.</p>
+                        </div>
+                    </div>
+                    <div class="about-photo-column">
+                        <div class="photo-entry">
+                            <h3 class="entry-title" id="about-photo-title">MAKARIY LOMYKIN</h3>
+                            <div class="photo-slot" id="about-portrait-slot">
+                                <span class="placeholder-frame-text">PORTRAIT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <h1 class="contact-main-heading">INQUIRIES</h1>
+                    <div class="contact-content">
+                        <p class="contact-statement" id="contact-statement-text">Interested in my work or looking to connect? I welcome opportunities to collaborate, exhibit, and continue exploring photography through new perspectives.</p>
+                        
+                        <div class="contact-details-grid">
+                            <div class="contact-item">
+                                <span class="contact-label">EMAIL</span>
+                                <a href="mailto:makariylo12@gmail.com" class="contact-value" id="contact-email">makariylo12@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">PHONE</span>
+                                <a href="tel:+19296159374" class="contact-value" id="contact-phone">+1 (929) 615-9374</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">LOCATION</span>
+                                <span class="contact-value" id="contact-location">Atlantic City, New Jersey</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">INSTAGRAM</span>
+                                <a href="https://instagram.com/shot.by1055" target="_blank" rel="noopener" class="contact-value" id="contact-instagram">@shot.by1055</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="footer-year"></span> <span id="footer-artist-name">MAKARIY LOMYKIN</span>. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        /* =======================================================================
+        PORTFOLIO CONFIGURATION - ADD YOUR PHOTO FILE NAMES HERE
+        =======================================================================
+        */
+        const PORTFOLIO_CONFIG = {
+            artistName: "MAKARIY LOMYKIN",
+            subtitle: "PHOTOGRAPHY PORTFOLIO",
+
+            featuredHomePhoto: "", 
+            aboutPortraitPhoto: "", 
+
+            projects: {
+                project1: {
+                    name: "01 — Where Light Finds Form",
+                    description: "A study of light, structure, and natural form, exploring how ordinary environments can become visually compelling through perspective, composition, and timing.",
+                    photos: [
+                        { file: "Light Study 1.jpg", subtext: "Atlantic City, NJ" },
+                        { file: "Structural Form.jpg", subtext: "Composition & Shadow" },
+                        { file: "Natural Geometry.jpg", subtext: "Natural Geometry" },
+                        { file: "Perspective Exposure.jpg", subtext: "Atmospheric Exposure" }
+                    ]
+                },
+                project2: {
+                    name: "02 — A Study in Color",
+                    description: "An exploration of color as a visual language, using contrast, harmony, and atmosphere to shape emotion and guide the viewer through each image.",
+                    photos: [
+                        { file: "Chromatic Contrast.jpg", subtext: "Atmospheric Tone" },
+                        { file: "Color Harmony.jpg", subtext: "Visual Study" },
+                        { file: "Tonal Gradient.jpg", subtext: "Environmental Color" },
+                        { file: "Saturated Depth.jpg", subtext: "Light & Hue" }
+                    ]
+                },
+                project3: {
+                    name: "03 — Quiet Observations",
+                    description: "A collection of moments often overlooked, focusing on the subtle details of people, places, and everyday environments that reveal something beyond the surface.",
+                    photos: [
+                        { file: "Overlooked Spaces.jpg", subtext: "Subtle Perspective" },
+                        { file: "Everyday Detail.jpg", subtext: "Environmental Study" },
+                        { file: "Still Moment.jpg", subtext: "Candid Observation" },
+                        { file: "Transient Light.jpg", subtext: "Quiet Atmosphere" }
+                    ]
+                },
+                project4: {
+                    name: "04 — Between the Seen and Unseen",
+                    description: "An exploration of atmosphere, ambiguity, and emotion, using photography to capture moments that invite interpretation rather than provide a single answer.",
+                    photos: [
+                        { file: "Atmospheric Emotion.jpg", subtext: "Atmospheric Emotion" },
+                        { file: "Shadow and Veil.jpg", subtext: "Visual Interpretation" },
+                        { file: "Abstract Horizon.jpg", subtext: "Coastal Atmosphere" },
+                        { file: "Unseen Perspective.jpg", subtext: "Fine Art Study" }
+                    ]
+                }
+            },
+
+            about: {
+                name: "MAKARIY LOMYKIN",
+                story: "I am a photographer based in Atlantic City, New Jersey, dedicated to exploring natural forms, atmospheric color, and quiet everyday moments. My work focuses on light, structure, and emotional resonance through visual storytelling, currently compiled for university photography program admissions."
+            },
+
+            contact: {
+                statement: "Interested in my work or looking to connect? I welcome opportunities to collaborate, exhibit, and continue exploring photography through new perspectives.",
+                email: "makariylo12@gmail.com",
+                phone: "+1 (929) 615-9374",
+                location: "Atlantic City, New Jersey",
+                instagram: "@shot.by1055"
+            }
+        };
+
+        /* =======================================================================
+        APPLICATION ENGINE
+        =======================================================================
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+            function cleanTitleFromFile(filename) {
+                if (!filename) return "Untitled";
+                return filename.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+            }
+
+            function populateContent() {
+                document.getElementById('nav-brand-text').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-subtitle').textContent = PORTFOLIO_CONFIG.subtitle;
+                document.getElementById('footer-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+
+                document.getElementById('nav-proj1').textContent = PORTFOLIO_CONFIG.projects.project1.name;
+                document.getElementById('nav-proj2').textContent = PORTFOLIO_CONFIG.projects.project2.name;
+                document.getElementById('nav-proj3').textContent = PORTFOLIO_CONFIG.projects.project3.name;
+                document.getElementById('nav-proj4').textContent = PORTFOLIO_CONFIG.projects.project4.name;
+
+                // Load Hero Photo
+                const heroSlot = document.getElementById('hero-slot');
+                if (PORTFOLIO_CONFIG.featuredHomePhoto) {
+                    heroSlot.innerHTML = `<img src="${PORTFOLIO_CONFIG.featuredHomePhoto}" alt="Featured Photo">`;
+                }
+
+                // Load Project Grids
+                ['project1', 'project2', 'project3', 'project4'].forEach((pKey, index) => {
+                    const pNum = index + 1;
+                    const projData = PORTFOLIO_CONFIG.projects[pKey];
+                    
+                    document.getElementById(`p${pNum}-title-heading`).textContent = projData.name;
+                    document.getElementById(`p${pNum}-desc-heading`).textContent = projData.description;
+
+                    const gridContainer = document.getElementById(`p${pNum}-grid`);
+                    gridContainer.innerHTML = '';
+
+                    projData.photos.forEach((photoObj) => {
+                        const titleText = cleanTitleFromFile(photoObj.file);
+                        const entry = document.createElement('div');
+                        entry.className = 'photo-entry';
+                        
+                        entry.innerHTML = `
+                            <h3 class="entry-title">${titleText}</h3>
+                            <div class="photo-slot">
+                                ${photoObj.file ? `<img src="${photoObj.file}" alt="${titleText}" onerror="this.remove();">` : ''}
+                                <span class="placeholder-frame-text">${titleText}</span>
+                            </div>
+                            <p class="entry-subtext">${photoObj.subtext}</p>
+                        `;
+                        gridContainer.appendChild(entry);
+                    });
+                });
+
+                // About Me Details
+                document.getElementById('about-artist-name').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-photo-title').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-story-text').innerHTML = `<p>${PORTFOLIO_CONFIG.about.story}</p>`;
+                
+                const aboutPortraitSlot = document.getElementById('about-portrait-slot');
+                if (PORTFOLIO_CONFIG.aboutPortraitPhoto) {
+                    aboutPortraitSlot.innerHTML = `<img src="${PORTFOLIO_CONFIG.aboutPortraitPhoto}" alt="Makariy Lomykin">`;
+                }
+
+                // Contact Details
+                document.getElementById('contact-statement-text').textContent = PORTFOLIO_CONFIG.contact.statement;
+                document.getElementById('contact-email').textContent = PORTFOLIO_CONFIG.contact.email;
+                document.getElementById('contact-email').href = `mailto:${PORTFOLIO_CONFIG.contact.email}`;
+                document.getElementById('contact-phone').textContent = PORTFOLIO_CONFIG.contact.phone;
+                document.getElementById('contact-phone').href = `tel:${PORTFOLIO_CONFIG.contact.phone.replace(/[^0-9+]/g, '')}`;
+                document.getElementById('contact-location').textContent = PORTFOLIO_CONFIG.contact.location;
+                document.getElementById('contact-instagram').textContent = PORTFOLIO_CONFIG.contact.instagram;
+                document.getElementById('contact-instagram').href = `https://instagram.com/${PORTFOLIO_CONFIG.contact.instagram.replace('@', '')}`;
+            }
+
+            populateContent();
+
+            // ROUTER
+            const pageSections = document.querySelectorAll('.page-section');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            function handleRoute() {
+                let hash = window.location.hash || '#home';
+                let targetId = hash.replace('#', '');
+
+                let targetSection = document.getElementById(targetId);
+                if (!targetSection) {
+                    targetId = 'home';
+                }
+
+                pageSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                        section.style.setProperty('display', 'block', 'important');
+                    } else {
+                        section.classList.remove('active');
+                        section.style.setProperty('display', 'none', 'important');
+                    }
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === '#' + targetId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (navMenu) navMenu.classList.remove('open');
+            }
+
+            window.addEventListener('hashchange', handleRoute);
+            handleRoute();
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
 
