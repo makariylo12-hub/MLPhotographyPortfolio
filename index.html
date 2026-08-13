@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* Theme Variables: Deep Forest Green & Warm Gold */
+        /* Theme Variables: Luminous Forest Green, Smoky Obsidian & Warm Gold */
         :root {
-            --bg-color: #0b1a13; /* Deep Forest Green Base */
-            --bg-secondary: #12241b; /* Slightly Lighter Forest Green for Cards/Headers */
-            --accent-gold: #c8a96e; /* Muted Warm Gold Accent */
-            --text-light: #e5ebe7; /* Off-White / Pale Sage Text */
-            --text-muted: #8ca395; /* Muted Soft Greenish-Gray */
-            --border-color: rgba(200, 169, 110, 0.2); /* Soft Gold Border Line */
+            --bg-color: #0e261a; /* Luminous Dark Forest Green */
+            --bg-secondary: #143323; /* Elevated Emerald Forest Card Base */
+            --accent-gold: #d4af37; /* Refined Gold Accent */
+            --smoke-light: rgba(46, 117, 83, 0.35); /* Soft Forest Mist Glow */
+            --text-light: #f0f4f1; /* Crisp Off-White Text */
+            --text-muted: #a3b8ab; /* Silvery Sage Subtext */
+            --border-color: rgba(212, 175, 55, 0.25); /* Subtle Gold Line Accent */
         }
 
         body {
@@ -30,12 +31,12 @@
 
         /* Header Styling */
         .site-header {
-            background-color: rgba(11, 26, 19, 0.95);
+            background-color: rgba(14, 38, 26, 0.92);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
         }
         .header-container {
             max-width: 1200px;
@@ -78,18 +79,39 @@
             padding: 3rem 2rem;
         }
 
-        /* ORIGINAL JADE TEXTURE EFFECT (Applied ONLY to #home and #about) */
-        .jade-textured-bg {
-            background-color: #0b1a13;
+        /* MOODY FOREST SMOKE / MIST BACKGROUND (#home and #about) */
+        .smoky-forest-bg {
+            position: relative;
+            background-color: #0c1f15;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(20, 60, 42, 0.75) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(200, 169, 110, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 50% 80%, rgba(14, 45, 31, 0.8) 0%, transparent 60%),
-                radial-gradient(circle at 70% 20%, rgba(35, 80, 58, 0.5) 0%, transparent 40%),
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            border-radius: 8px;
-            box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+                /* Smoke Cloud Layer 1: Soft upper corner wisps */
+                radial-gradient(circle at 20% 20%, var(--smoke-light) 0%, transparent 55%),
+                /* Smoke Cloud Layer 2: Deep central mist */
+                radial-gradient(circle at 75% 65%, rgba(20, 60, 40, 0.6) 0%, transparent 60%),
+                /* Smoke Cloud Layer 3: Lower glow haze */
+                radial-gradient(circle at 40% 85%, rgba(60, 140, 95, 0.25) 0%, transparent 50%),
+                /* Subtle Conic Swirl for Organic Fog Lines */
+                conic-gradient(from 180deg at 50% 50%, rgba(10, 30, 20, 0.8) 0deg, rgba(25, 75, 50, 0.4) 120deg, rgba(5, 15, 10, 0.9) 240deg, rgba(25, 75, 50, 0.4) 360deg);
+            background-blend-mode: screen, normal, color-dodge, multiply;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6), 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Static Fog Diffusion Effect */
+        .smoky-forest-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .smoky-forest-bg > * {
+            position: relative;
+            z-index: 1;
         }
 
         /* Typography & Titles */
@@ -99,11 +121,12 @@
             letter-spacing: 2px;
             font-weight: 400;
         }
+
         .project-description, .entry-subtext {
             color: var(--text-muted);
         }
 
-        /* Photo Slot Styles & Placeholder Layering */
+        /* Photo Slot Styles */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -114,7 +137,11 @@
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
             padding: 1rem;
-            border-radius: 4px;
+            border-radius: 6px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .photo-entry:hover {
+            border-color: rgba(212, 175, 55, 0.5);
         }
         .entry-title {
             font-family: 'Cormorant Garamond', serif;
@@ -126,13 +153,14 @@
         .photo-slot {
             width: 100%;
             min-height: 320px;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border-radius: 4px;
         }
         .photo-slot img {
             width: 100%;
@@ -148,7 +176,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent-gold);
-            opacity: 0.5;
+            opacity: 0.6;
             position: absolute;
             z-index: 1;
             pointer-events: none;
@@ -157,8 +185,8 @@
         /* About Section Styling */
         .about-story p {
             color: var(--text-light);
-            line-height: 1.7;
-            font-size: 1rem;
+            line-height: 1.75;
+            font-size: 1.02rem;
             margin-bottom: 1.2rem;
         }
         .about-awards-list {
@@ -185,9 +213,9 @@
         .site-footer {
             border-top: 1px solid var(--border-color);
             text-align: center;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-top: 4rem;
         }
     </style>
@@ -214,10 +242,10 @@
 
     <main id="app-content">
 
-        <section id="home" class="page-section jade-textured-bg active">
+        <section id="home" class="page-section smoky-forest-bg active">
             <div class="container hero-container">
                 <div class="hero-header fade-in">
-                    <h1 class="artist-name" style="font-size: 3rem;">MAKARIY LOMYKIN</h1>
+                    <h1 class="artist-name" style="font-size: 3.25rem;">MAKARIY LOMYKIN</h1>
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper fade-in" style="margin-top: 2rem;">
@@ -394,7 +422,7 @@
             </div>
         </section>
 
-        <section id="about" class="page-section jade-textured-bg">
+        <section id="about" class="page-section smoky-forest-bg">
             <div class="container">
                 <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
                     <div class="about-text-column">
