@@ -23,7 +23,7 @@ const PORTFOLIO_CONFIG = {
             name: "02 — A Study in Color",
             description: "An exploration of color as a visual language, using contrast, harmony, and atmosphere to shape emotion and guide the viewer through each image.",
             photos: [
-                // THIS IS YOUR UPLOADED PHOTO:
+                // EXACT FILE NAME MATCH IN GITHUB REPOSITORY:
                 { file: "Into The Deep.jpg", subtext: "Atmospheric Tone" },
                 { file: "Color Harmony.jpg", subtext: "Visual Study" },
                 { file: "Tonal Gradient.jpg", subtext: "Environmental Color" },
