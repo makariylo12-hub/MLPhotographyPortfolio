@@ -14,7 +14,7 @@
         .page-section { display: none; }
         .page-section.active { display: block !important; }
         
-        /* Photo Slot Styles */
+        /* Photo Slot Styles & Placeholder Layering */
         .photo-slot {
             width: 100%;
             min-height: 280px;
@@ -31,6 +31,8 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            position: relative;
+            z-index: 2; /* Sits cleanly on top of placeholder text */
         }
         .placeholder-frame-text {
             font-family: 'Inter', sans-serif;
@@ -38,6 +40,9 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             opacity: 0.4;
+            position: absolute; /* Centered directly behind the photo */
+            z-index: 1;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -118,8 +123,8 @@
                     <div class="photo-entry">
                         <h3 class="entry-title">Into The Deep</h3>
                         <div class="photo-slot">
-                            <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onerror="this.style.display='none';">
                             <span class="placeholder-frame-text">INTO THE DEEP</span>
+                            <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Atmospheric Tone</p>
                     </div>
