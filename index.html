@@ -10,16 +10,110 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* Base Visibility Fixes */
+        /* Theme Variables: Deep Forest Green & Warm Gold */
+        :root {
+            --bg-color: #0b1a13; /* Deep Forest Green Base */
+            --bg-secondary: #12241b; /* Slightly Lighter Forest Green for Cards/Headers */
+            --accent-gold: #c8a96e; /* Muted Warm Gold Accent */
+            --text-light: #e5ebe7; /* Off-White / Pale Sage Text */
+            --text-muted: #8ca395; /* Muted Soft Greenish-Gray */
+            --border-color: rgba(200, 169, 110, 0.2); /* Soft Gold Border Line */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        .site-header {
+            background-color: rgba(11, 26, 19, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold);
+        }
+
+        /* Visibility Fixes */
         .page-section { display: none; }
         .page-section.active { display: block !important; }
-        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Typography & Titles */
+        .project-title, .artist-name, .about-name, .contact-main-heading {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+        .project-description, .entry-subtext {
+            color: var(--text-muted);
+        }
+
         /* Photo Slot Styles & Placeholder Layering */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .photo-entry {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .entry-title {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
         .photo-slot {
             width: 100%;
-            min-height: 280px;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 320px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,17 +126,28 @@
             object-fit: cover;
             display: block;
             position: relative;
-            z-index: 2; /* Sits cleanly on top of placeholder text */
+            z-index: 2;
         }
         .placeholder-frame-text {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.4;
-            position: absolute; /* Centered directly behind the photo */
+            color: var(--accent-gold);
+            opacity: 0.5;
+            position: absolute;
             z-index: 1;
             pointer-events: none;
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 4rem;
         }
     </style>
 </head>
@@ -69,13 +174,13 @@
     <main id="app-content">
 
         <section id="home" class="page-section active">
-            <div class="hero-container">
+            <div class="container hero-container">
                 <div class="hero-header fade-in">
-                    <h1 class="artist-name">MAKARIY LOMYKIN</h1>
-                    <p class="artist-subtitle">PHOTOGRAPHY PORTFOLIO</p>
+                    <h1 class="artist-name" style="font-size: 3rem;">MAKARIY LOMYKIN</h1>
+                    <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
-                <div class="hero-photo-wrapper fade-in">
-                    <div class="photo-slot hero-slot">
+                <div class="hero-photo-wrapper fade-in" style="margin-top: 2rem;">
+                    <div class="photo-slot hero-slot" style="min-height: 450px;">
                         <span class="placeholder-frame-text">FEATURED WORK</span>
                     </div>
                 </div>
@@ -89,6 +194,14 @@
                     <p class="project-description">A study of light, structure, and natural form, exploring how ordinary environments can become visually compelling through perspective, composition, and timing.</p>
                 </header>
                 <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Golden Mosaic Altar</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">GOLDEN MOSAIC ALTAR</span>
+                            <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onerror="this.style.display='none';">
+                        </div>
+                        <p class="entry-subtext">Golden statue framed centrally inside an ornate mosaic sanctuary — Sony a6100, 16-50mm lens</p>
+                    </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Sequential Arches</h3>
                         <div class="photo-slot">
@@ -113,11 +226,6 @@
                         </div>
                         <p class="entry-subtext">Low-angle stone clock tower in warm sunlight — Sony a6100, 16-50mm lens</p>
                     </div>
-                    <div class="photo-entry">
-                        <h3 class="entry-title">Perspective Exposure</h3>
-                        <div class="photo-slot"><span class="placeholder-frame-text">PERSPECTIVE EXPOSURE</span></div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -129,6 +237,14 @@
                     <p class="project-description">An exploration of color as a visual language, using contrast, harmony, and atmosphere to shape emotion and guide the viewer through each image.</p>
                 </header>
                 <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Sculpted Embrace</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">SCULPTED EMBRACE</span>
+                            <img src="Sculpted%20Embrace.jpg" alt="Sculpted Embrace" onerror="this.style.display='none';">
+                        </div>
+                        <p class="entry-subtext">Sloping cobblestone street with blue flowerpots toward a tree-covered hill — Sony a6100, 16-50mm lens</p>
+                    </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Where The Light Lingers</h3>
                         <div class="photo-slot">
@@ -153,11 +269,6 @@
                         </div>
                         <p class="entry-subtext">Crashing ocean water and dark rocks against an orange sunset — Sony a6100, 16-50mm lens</p>
                     </div>
-                    <div class="photo-entry">
-                        <h3 class="entry-title">Tonal Gradient</h3>
-                        <div class="photo-slot"><span class="placeholder-frame-text">TONAL GRADIENT</span></div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -170,17 +281,20 @@
                 </header>
                 <div class="portfolio-grid">
                     <div class="photo-entry">
+                        <h3 class="entry-title">Solitary Reflection</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">SOLITARY REFLECTION</span>
+                            <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onerror="this.style.display='none';">
+                        </div>
+                        <p class="entry-subtext">Figure sitting alone on a bench along a coastal walkway — Sony a6100, 16-50mm lens</p>
+                    </div>
+                    <div class="photo-entry">
                         <h3 class="entry-title">Angler on the Jetty</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLER ON THE JETTY</span>
                             <img src="Angler%20on%20the%20Jetty.jpeg" alt="Angler on the Jetty" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Silhouette of a hooded angler on large coastal rocks — Sony a6100, 16-50mm lens</p>
-                    </div>
-                    <div class="photo-entry">
-                        <h3 class="entry-title">Everyday Detail</h3>
-                        <div class="photo-slot"><span class="placeholder-frame-text">EVERYDAY DETAIL</span></div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Still Moment</h3>
@@ -203,6 +317,14 @@
                     <p class="project-description">An exploration of atmosphere, ambiguity, and emotion, using photography to capture moments that invite interpretation rather than provide a single answer.</p>
                 </header>
                 <div class="portfolio-grid">
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Veiled Statue</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">VEILED STATUE</span>
+                            <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onerror="this.style.display='none';">
+                        </div>
+                        <p class="entry-subtext">Monochrome stone sculpture of a figure holding a child in low-key light — Sony a6100, 16-50mm lens</p>
+                    </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Echo</h3>
                         <div class="photo-slot">
@@ -227,21 +349,16 @@
                         </div>
                         <p class="entry-subtext">Stone memorial arch framed behind an out-of-focus traffic light — Sony a6100, 16-50mm lens</p>
                     </div>
-                    <div class="photo-entry">
-                        <h3 class="entry-title">Abstract Horizon</h3>
-                        <div class="photo-slot"><span class="placeholder-frame-text">ABSTRACT HORIZON</span></div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
-                    </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="page-section">
             <div class="container">
-                <div class="about-grid">
+                <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div class="about-text-column">
                         <h1 class="about-name">MAKARIY LOMYKIN</h1>
-                        <div class="about-story">
+                        <div class="about-story" style="color: var(--text-muted); line-height: 1.6;">
                             <p>I am a photographer based in Atlantic City, New Jersey, dedicated to exploring natural forms, atmospheric color, and quiet everyday moments. My work focuses on light, structure, and emotional resonance through visual storytelling, currently compiled for university photography program admissions.</p>
                         </div>
                     </div>
@@ -262,24 +379,24 @@
                 <div class="contact-wrapper">
                     <h1 class="contact-main-heading">INQUIRIES</h1>
                     <div class="contact-content">
-                        <p class="contact-statement">Interested in my work or looking to connect? I welcome opportunities to collaborate, exhibit, and continue exploring photography through new perspectives.</p>
+                        <p class="contact-statement" style="color: var(--text-muted);">Interested in my work or looking to connect? I welcome opportunities to collaborate, exhibit, and continue exploring photography through new perspectives.</p>
                         
-                        <div class="contact-details-grid">
+                        <div class="contact-details-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
                             <div class="contact-item">
-                                <span class="contact-label">EMAIL</span>
-                                <a href="mailto:makariylo12@gmail.com" class="contact-value">makariylo12@gmail.com</a>
+                                <span class="contact-label" style="display: block; font-size: 0.75rem; color: var(--accent-gold);">EMAIL</span>
+                                <a href="mailto:makariylo12@gmail.com" class="contact-value" style="color: var(--text-light); text-decoration: none;">makariylo12@gmail.com</a>
                             </div>
                             <div class="contact-item">
-                                <span class="contact-label">PHONE</span>
-                                <a href="tel:+19296159374" class="contact-value">+1 (929) 615-9374</a>
+                                <span class="contact-label" style="display: block; font-size: 0.75rem; color: var(--accent-gold);">PHONE</span>
+                                <a href="tel:+19296159374" class="contact-value" style="color: var(--text-light); text-decoration: none;">+1 (929) 615-9374</a>
                             </div>
                             <div class="contact-item">
-                                <span class="contact-label">LOCATION</span>
-                                <span class="contact-value">Atlantic City, New Jersey</span>
+                                <span class="contact-label" style="display: block; font-size: 0.75rem; color: var(--accent-gold);">LOCATION</span>
+                                <span class="contact-value" style="color: var(--text-light);">Atlantic City, New Jersey</span>
                             </div>
                             <div class="contact-item">
-                                <span class="contact-label">INSTAGRAM</span>
-                                <a href="https://instagram.com/shot.by1055" target="_blank" rel="noopener" class="contact-value">@shot.by1055</a>
+                                <span class="contact-label" style="display: block; font-size: 0.75rem; color: var(--accent-gold);">INSTAGRAM</span>
+                                <a href="https://instagram.com/shot.by1055" target="_blank" rel="noopener" class="contact-value" style="color: var(--text-light); text-decoration: none;">@shot.by1055</a>
                             </div>
                         </div>
                     </div>
