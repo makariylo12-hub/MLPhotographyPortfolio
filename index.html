@@ -35,7 +35,7 @@
 
     <main id="app-content">
 
-        <section id="home" class="page-section active">
+        <section id="home" class="page-section">
             <div class="hero-container">
                 <div class="hero-header fade-in">
                     <h1 class="artist-name" id="home-artist-name">MAKARIY LOMYKIN</h1>
@@ -224,5 +224,142 @@
         */
         document.addEventListener('DOMContentLoaded', () => {
             let activeSlotElement = null;
-            const fileInput
+            const fileInput = document.getElementById('global-file-input');
+
+            // Set current year
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+            // Populate text content from Config
+            function populateTextContent() {
+                document.getElementById('nav-brand-text').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+                document.getElementById('home-artist-subtitle').textContent = PORTFOLIO_CONFIG.subtitle;
+                document.getElementById('footer-artist-name').textContent = PORTFOLIO_CONFIG.artistName;
+
+                document.getElementById('nav-proj1').textContent = PORTFOLIO_CONFIG.projects.project1.name;
+                document.getElementById('nav-proj2').textContent = PORTFOLIO_CONFIG.projects.project2.name;
+                document.getElementById('nav-proj3').textContent = PORTFOLIO_CONFIG.projects.project3.name;
+                document.getElementById('nav-proj4').textContent = PORTFOLIO_CONFIG.projects.project4.name;
+
+                ['project1', 'project2', 'project3', 'project4'].forEach((pKey, index) => {
+                    const pNum = index + 1;
+                    const projData = PORTFOLIO_CONFIG.projects[pKey];
+                    
+                    document.getElementById(`p${pNum}-title-heading`).textContent = projData.name;
+                    document.getElementById(`p${pNum}-desc-heading`).textContent = projData.description;
+
+                    const gridContainer = document.getElementById(`p${pNum}-grid`);
+                    gridContainer.innerHTML = '';
+
+                    projData.photos.forEach((photo, pIdx) => {
+                        const entry = document.createElement('div');
+                        entry.className = 'photo-entry';
+                        entry.innerHTML = `
+                            <h3 class="entry-title">${photo.title}</h3>
+                            <div class="photo-slot" data-slot-id="${pKey}-slot-${pIdx}">
+                                <div class="slot-placeholder">
+                                    <span class="plus-icon">+</span>
+                                    <span class="add-text">ADD PHOTO</span>
+                                </div>
+                            </div>
+                            <p class="entry-subtext">${photo.subtext}</p>
+                        `;
+                        gridContainer.appendChild(entry);
+                    });
+                });
+
+                document.getElementById('about-artist-name').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-photo-title').textContent = PORTFOLIO_CONFIG.about.name;
+                document.getElementById('about-story-text').innerHTML = `<p>${PORTFOLIO_CONFIG.about.story}</p>`;
+
+                document.getElementById('contact-statement-text').textContent = PORTFOLIO_CONFIG.contact.statement;
+                document.getElementById('contact-email').textContent = PORTFOLIO_CONFIG.contact.email;
+                document.getElementById('contact-email').href = `mailto:${PORTFOLIO_CONFIG.contact.email}`;
+                document.getElementById('contact-phone').textContent = PORTFOLIO_CONFIG.contact.phone;
+                document.getElementById('contact-phone').href = `tel:${PORTFOLIO_CONFIG.contact.phone.replace(/[^0-9+]/g, '')}`;
+                document.getElementById('contact-location').textContent = PORTFOLIO_CONFIG.contact.location;
+                document.getElementById('contact-instagram').textContent = PORTFOLIO_CONFIG.contact.instagram;
+                document.getElementById('contact-instagram').href = `https://instagram.com/${PORTFOLIO_CONFIG.contact.instagram.replace('@', '')}`;
+            }
+
+            populateTextContent();
+
+            // FAILSAFE ROUTER - FORCE INLINE DISPLAY
+            const pageSections = document.querySelectorAll('.page-section');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            function handleRoute() {
+                let hash = window.location.hash || '#home';
+                let targetId = hash.replace('#', '');
+
+                let targetSection = document.getElementById(targetId);
+                if (!targetSection) {
+                    targetId = 'home';
+                }
+
+                // Force visibility on screen directly via inline styles
+                pageSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.style.setProperty('display', 'block', 'important');
+                        section.classList.add('active');
+                    } else {
+                        section.style.setProperty('display', 'none', 'important');
+                        section.classList.remove('active');
+                    }
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === '#' + targetId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (navMenu) navMenu.classList.remove('open');
+            }
+
+            window.addEventListener('hashchange', handleRoute);
+            handleRoute();
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                });
+            }
+
+            // Photo Uploader Event Handler
+            document.body.addEventListener('click', (e) => {
+                const slot = e.target.closest('.photo-slot');
+                if (slot) {
+                    activeSlotElement = slot;
+                    fileInput.click();
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file && activeSlotElement) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        activeSlotElement.innerHTML = '';
+                        activeSlotElement.classList.add('has-image');
+
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.alt = "Uploaded Photo";
+                        img.className = "uploaded-photo";
+
+                        activeSlotElement.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+                fileInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
 
