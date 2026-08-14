@@ -213,7 +213,7 @@
             margin-bottom: 0.75rem;
         }
         
-        /* RESTORED ORIGINAL GOLD-TINT HIGHLIGHT BACKGROUND */
+        /* Original Gold-Tint Highlight Background */
         .photo-slot {
             width: 100%;
             min-height: 320px;
@@ -237,7 +237,7 @@
             outline: none;
         }
 
-        /* Default cover style for vertical/untouched photos */
+        /* Subtle Image Load Transition */
         .photo-slot img {
             width: 100%;
             height: 100%;
@@ -245,6 +245,11 @@
             display: block;
             position: relative;
             z-index: 2;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        .photo-slot img.loaded {
+            opacity: 1;
         }
 
         /* Contain fit strictly applied ONLY to horizontal/landscape layout photos needing framing adjustment */
@@ -263,6 +268,71 @@
             position: absolute;
             z-index: 1;
             pointer-events: none;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            display: grid;
+            gap: 1.25rem;
+            margin-top: 2rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-label {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+        .form-input, .form-textarea {
+            background-color: rgba(4, 13, 7, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-submit {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        .form-submit:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color);
+        }
+        .form-success-msg {
+            display: none;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
         }
 
         /* About Section Styling */
@@ -340,7 +410,7 @@
                 </div>
                 <div class="hero-photo-wrapper fade-in" style="margin-top: 2rem;">
                     <div class="photo-slot hero-slot" style="min-height: 500px;">
-                        <img src="Soaring%20the%20Seas.jpg" class="contain-fit" alt="Featured Photography" onerror="this.style.display='none';">
+                        <img src="Soaring%20the%20Seas.jpg" class="contain-fit" alt="Featured Photography" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -357,7 +427,7 @@
                         <h3 class="entry-title">Golden Mosaic Altar</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">GOLDEN MOSAIC ALTAR</span>
-                            <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onerror="this.style.display='none';">
+                            <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Golden statue framed centrally inside an ornate mosaic sanctuary — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -365,7 +435,7 @@
                         <h3 class="entry-title">Sequential Arches</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SEQUENTIAL ARCHES</span>
-                            <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onerror="this.style.display='none';">
+                            <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Low-angle repeating stone arches framing a courtyard — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -373,7 +443,7 @@
                         <h3 class="entry-title">Angled Beams</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLED BEAMS</span>
-                            <img src="Angled%20Beams.jpg" alt="Angled Beams" onerror="this.style.display='none';">
+                            <img src="Angled%20Beams.jpg" alt="Angled Beams" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Upward perspective of modern balconies and steel beams — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -381,7 +451,7 @@
                         <h3 class="entry-title">Clock Tower Angle</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">CLOCK TOWER ANGLE</span>
-                            <img src="Clock%20Tower%20Angle.jpg" alt="Clock Tower Angle" onerror="this.style.display='none';">
+                            <img src="Clock%20Tower%20Angle.jpg" alt="Clock Tower Angle" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Low-angle stone clock tower in warm sunlight — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -400,7 +470,7 @@
                         <h3 class="entry-title">Sculpted Embrace</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SCULPTED EMBRACE</span>
-                            <img src="Sculpted%20Embrace.jpg" class="contain-fit" alt="Sculpted Embrace" onerror="this.style.display='none';">
+                            <img src="Sculpted%20Embrace.jpg" class="contain-fit" alt="Sculpted Embrace" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Sloping cobblestone street with blue flowerpots toward a tree-covered hill — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -408,7 +478,7 @@
                         <h3 class="entry-title">Where The Light Lingers</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">WHERE THE LIGHT LINGERS</span>
-                            <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onerror="this.style.display='none';">
+                            <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Shadowed narrow street with blue pots in direct sunlight — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -416,7 +486,7 @@
                         <h3 class="entry-title">Blue Dusk Reflection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">BLUE DUSK REFLECTION</span>
-                            <img src="Blue%20Dusk%20Reflection.jpeg" alt="Blue Dusk Reflection" onerror="this.style.display='none';">
+                            <img src="Blue%20Dusk%20Reflection.jpeg" alt="Blue Dusk Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Glass skyscraper illuminated under a deep blue dusk sky — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -424,7 +494,7 @@
                         <h3 class="entry-title">Breakwater Waves</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">BREAKWATER WAVES</span>
-                            <img src="Breakwater%20Waves.png" class="contain-fit" alt="Breakwater Waves" onerror="this.style.display='none';">
+                            <img src="Breakwater%20Waves.png" class="contain-fit" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Crashing ocean water and dark rocks against an orange sunset — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -443,7 +513,7 @@
                         <h3 class="entry-title">Solitary Reflection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SOLITARY REFLECTION</span>
-                            <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onerror="this.style.display='none';">
+                            <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Figure sitting alone on a bench along a coastal walkway — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -451,7 +521,7 @@
                         <h3 class="entry-title">Angler on The Jetty</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLER ON THE JETTY</span>
-                            <img src="Angler%20on%20The%20Jetty.jpeg" alt="Angler on The Jetty" onerror="this.style.display='none';">
+                            <img src="Angler%20on%20The%20Jetty.jpeg" alt="Angler on The Jetty" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Silhouette of a hooded angler on large coastal rocks — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -480,7 +550,7 @@
                         <h3 class="entry-title">Veiled Statue</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">VEILED STATUE</span>
-                            <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onerror="this.style.display='none';">
+                            <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Monochrome stone sculpture of a figure holding a child in low-key light — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -488,7 +558,7 @@
                         <h3 class="entry-title">Echo</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ECHO</span>
-                            <img src="Echo.jpeg" alt="Echo" onerror="this.style.display='none';">
+                            <img src="Echo.jpeg" alt="Echo" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Monochrome stone statue with slight motion blur — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -496,7 +566,7 @@
                         <h3 class="entry-title">Resting Figure in Light</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">RESTING FIGURE IN LIGHT</span>
-                            <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onerror="this.style.display='none';">
+                            <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Sculpted reclining figure illuminated by a diagonal beam of light — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -504,7 +574,7 @@
                         <h3 class="entry-title">Arch and Intersection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ARCH AND INTERSECTION</span>
-                            <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onerror="this.style.display='none';">
+                            <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Stone memorial arch framed behind an out-of-focus traffic light — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -567,6 +637,23 @@
                                 <a href="https://instagram.com/shot.by1055" target="_blank" rel="noopener" class="contact-value" style="color: var(--text-light); text-decoration: none;">@shot.by1055</a>
                             </div>
                         </div>
+
+                        <form class="contact-form" id="inquiry-form">
+                            <div class="form-group">
+                                <label class="form-label" for="from-name">Your Name</label>
+                                <input class="form-input" type="text" id="from-name" name="name" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="from-email">Your Email</label>
+                                <input class="form-input" type="email" id="from-email" name="email" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message</label>
+                                <textarea class="form-textarea" id="message" name="message" required placeholder="Write your message or inquiry here..."></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">Send Message</button>
+                            <div class="form-success-msg" id="form-success">Thank you! Your message has been sent successfully. I will get back to you soon.</div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -624,6 +711,20 @@
             if (mobileToggle) {
                 mobileToggle.addEventListener('click', () => {
                     navMenu.classList.toggle('open');
+                });
+            }
+
+            // Contact Form Submission Handler
+            const inquiryForm = document.getElementById('inquiry-form');
+            const formSuccess = document.getElementById('form-success');
+            if (inquiryForm) {
+                inquiryForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    formSuccess.style.display = 'block';
+                    inquiryForm.reset();
+                    setTimeout(() => {
+                        formSuccess.style.display = 'none';
+                    }, 5000);
                 });
             }
         });
