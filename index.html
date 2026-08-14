@@ -638,7 +638,9 @@
                             </div>
                         </div>
 
-                        <form class="contact-form" id="inquiry-form">
+                        <form class="contact-form" id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="c5d86ba5-dbc6-472f-bc1f-6246928e8059">
+                            
                             <div class="form-group">
                                 <label class="form-label" for="from-name">Your Name</label>
                                 <input class="form-input" type="text" id="from-name" name="name" required placeholder="Enter your name">
@@ -714,17 +716,33 @@
                 });
             }
 
-            // Contact Form Submission Handler
+            // Web3Forms AJAX Submission Handler with Fade-in and Reset
             const inquiryForm = document.getElementById('inquiry-form');
             const formSuccess = document.getElementById('form-success');
             if (inquiryForm) {
-                inquiryForm.addEventListener('submit', (e) => {
+                inquiryForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    formSuccess.style.display = 'block';
-                    inquiryForm.reset();
-                    setTimeout(() => {
-                        formSuccess.style.display = 'none';
-                    }, 5000);
+                    const formData = new FormData(inquiryForm);
+                    
+                    try {
+                        const response = await fetch('https://api.web3forms.com/submit', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            formSuccess.style.display = 'block';
+                            inquiryForm.reset();
+                            setTimeout(() => {
+                                formSuccess.style.display = 'none';
+                            }, 5000);
+                        } else {
+                            alert('Something went wrong. Please try again.');
+                        }
+                    } catch (error) {
+                        alert('An error occurred. Please check your connection.');
+                    }
                 });
             }
         });
