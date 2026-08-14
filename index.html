@@ -26,6 +26,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* Header Styling */
@@ -54,36 +55,39 @@
             font-weight: 600;
         }
         
-        /* Custom Mobile Menu Button: Vertical lines & stacked vertical letters M-O-R-E */
+        /* Clean Professional Mobile Menu Button: Vertical Line + Stacked Vertical M-O-R-E + Vertical Line with explicit spacing */
         .mobile-toggle {
             display: none;
             background: none;
             border: 1px solid var(--accent-gold);
             border-radius: 4px;
-            padding: 0.35rem 0.5rem;
+            padding: 0.35rem 0.6rem;
             cursor: pointer;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            width: 52px;
+            gap: 8px;
             height: 40px;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         .mobile-toggle .line-left,
         .mobile-toggle .line-right {
             width: 2px;
-            height: 22px;
+            height: 20px;
             background-color: var(--accent-gold);
+            flex-shrink: 0;
         }
         .mobile-toggle .word-stack {
             display: flex;
             flex-direction: column;
             align-items: center;
-            line-height: 1;
+            justify-content: center;
+            line-height: 1.15;
             font-family: 'Inter', sans-serif;
-            font-size: 0.5rem;
+            font-size: 0.48rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--accent-gold);
             text-transform: uppercase;
         }
@@ -211,11 +215,11 @@
             margin-bottom: 0.75rem;
         }
         
-        /* Updated Photo Slot with Gold Highlight Background for Unfilled/Active states */
+        /* Gold-Only Highlight Background for Unfilled/Active states, purging all default white flashes */
         .photo-slot {
             width: 100%;
             min-height: 320px;
-            background-color: rgba(200, 169, 110, 0.08); /* Gold-tinted highlight instead of white */
+            background-color: rgba(200, 169, 110, 0.1);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -223,10 +227,16 @@
             position: relative;
             overflow: hidden;
             border-radius: 6px;
-            transition: background-color 0.2s ease;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(200, 169, 110, 0.3);
         }
-        .photo-slot:active {
-            background-color: rgba(200, 169, 110, 0.2); /* Deepened gold flash when clicked/active */
+        .photo-slot:hover {
+            background-color: rgba(200, 169, 110, 0.15);
+        }
+        .photo-slot:active, .photo-slot:focus {
+            background-color: rgba(200, 169, 110, 0.25) !important;
+            outline: none;
         }
         .photo-slot img {
             width: 100%;
@@ -242,7 +252,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent-gold);
-            opacity: 0.7;
+            opacity: 0.75;
             position: absolute;
             z-index: 1;
             pointer-events: none;
