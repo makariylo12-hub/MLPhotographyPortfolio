@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* Theme Variables: Forest Green, Smoky Obsidian & Gold Accent */
+        /* Theme Variables: Forest Emerald, Obsidian & Fine-Art Gold */
         :root {
-            --bg-color: #06120b; /* Deep Obsidian Green Base */
-            --bg-secondary: #0d2216; /* Dark Emerald Card Base */
+            --bg-color: #040d07; /* Obsidian Green Base */
+            --bg-secondary: #0b1f13; /* Dark Emerald Card Base */
             --accent-gold: #c8a96e; /* Warm Fine-Art Gold */
             --text-light: #f0f4f1; /* Off-White Text */
             --text-muted: #8da496; /* Silvery Sage Subtext */
@@ -30,7 +30,7 @@
 
         /* Header Styling */
         .site-header {
-            background-color: rgba(6, 18, 11, 0.95);
+            background-color: rgba(4, 13, 7, 0.95);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -78,31 +78,23 @@
             padding: 3rem 2rem;
         }
 
-        /* ORGANIC SMOKY FOREST CLOUD TEXTURE (#home and #about) */
+        /* CANVAS SMOKE CONTAINER (#home and #about) */
         .smoky-forest-bg {
             position: relative;
-            background-color: #051009;
-            /* Layer 1: Billowing Smoke Clouds (Generated SVG Noise) 
-               Layer 2 & 3: Vibrant Emerald Spotlights through smoke clouds */
-            background-image: 
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='smokeFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008' numOctaves='6' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0.1 0 0 0 0.08 0 0.5 0 0 0.22 0 0 0.2 0 0.12 0 0 0 0.85 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23smokeFilter)'/%3E%3C/svg%3E"),
-                radial-gradient(circle at 35% 45%, rgba(34, 139, 87, 0.5) 0%, rgba(12, 48, 30, 0.7) 45%, rgba(3, 12, 7, 0.95) 85%),
-                radial-gradient(circle at 70% 30%, rgba(46, 184, 114, 0.3) 0%, transparent 60%);
-            background-blend-mode: color-dodge, normal, screen;
-            background-size: cover, cover, cover;
-            background-position: center;
+            background-color: #040d07;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9), 0 15px 35px rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
 
-        /* Soft wispy overlay for atmospheric depth */
-        .smoky-forest-bg::before {
-            content: '';
+        /* Embedded Canvas for Wispy Smoke Texture */
+        .smoke-canvas {
             position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 75%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
         }
@@ -241,6 +233,7 @@
     <main id="app-content">
 
         <section id="home" class="page-section smoky-forest-bg active">
+            <canvas class="smoke-canvas" id="canvas-home"></canvas>
             <div class="container hero-container">
                 <div class="hero-header fade-in">
                     <h1 class="artist-name" style="font-size: 3.25rem;">MAKARIY LOMYKIN</h1>
@@ -421,6 +414,7 @@
         </section>
 
         <section id="about" class="page-section smoky-forest-bg">
+            <canvas class="smoke-canvas" id="canvas-about"></canvas>
             <div class="container">
                 <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
                     <div class="about-text-column">
@@ -490,6 +484,77 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+            // Procedural Minimalistic "Jellyfish" Wispy Smoke Renderer
+            function drawWispySmoke(canvasId) {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                
+                // Adjust for high-dpi screens
+                const rect = canvas.parentElement.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+
+                const width = canvas.width;
+                const height = canvas.height;
+
+                // Base Deep Dark Gradient
+                const bgGrad = ctx.createRadialGradient(width*0.5, height*0.4, 10, width*0.5, height*0.5, Math.max(width, height));
+                bgGrad.addColorStop(0, '#0a2214');
+                bgGrad.addColorStop(0.6, '#040d07');
+                bgGrad.addColorStop(1, '#020603');
+                ctx.fillStyle = bgGrad;
+                ctx.fillRect(0, 0, width, height);
+
+                // Render wispy curved smoke tendrils
+                const tendrilCount = 18;
+                ctx.globalCompositeOperation = 'screen';
+
+                for (let i = 0; i < tendrilCount; i++) {
+                    ctx.beginPath();
+                    
+                    // Root point near center-bottom / mid region
+                    let startX = width * (0.35 + (i / tendrilCount) * 0.3);
+                    let startY = height * 0.85;
+
+                    ctx.moveTo(startX, startY);
+
+                    // Organic jellyfish-like curved plume paths
+                    let cp1x = startX + (Math.sin(i * 1.5) * 120);
+                    let cp1y = height * (0.6 - (i % 3) * 0.1);
+                    let cp2x = startX + (Math.cos(i * 2.1) * 160);
+                    let cp2y = height * (0.35 - (i % 2) * 0.08);
+                    let endX = startX + (Math.sin(i * 0.8) * 90);
+                    let endY = height * 0.1;
+
+                    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
+
+                    // Wispy, luminous emerald stroke
+                    let lineGrad = ctx.createLinearGradient(startX, startY, endX, endY);
+                    lineGrad.addColorStop(0, 'rgba(4, 13, 7, 0)');
+                    lineGrad.addColorStop(0.3, 'rgba(34, 180, 105, 0.22)');
+                    lineGrad.addColorStop(0.6, 'rgba(60, 220, 130, 0.35)');
+                    lineGrad.addColorStop(0.9, 'rgba(20, 110, 65, 0.15)');
+                    lineGrad.addColorStop(1, 'rgba(4, 13, 7, 0)');
+
+                    ctx.strokeStyle = lineGrad;
+                    ctx.lineWidth = 18 + (i % 5) * 12;
+                    ctx.shadowColor = '#22b469';
+                    ctx.shadowBlur = 25;
+                    ctx.stroke();
+                }
+
+                ctx.globalCompositeOperation = 'source-over';
+            }
+
+            function initCanvases() {
+                drawWispySmoke('canvas-home');
+                drawWispySmoke('canvas-about');
+            }
+
+            initCanvases();
+            window.addEventListener('resize', initCanvases);
+
             // Navigation Routing
             const pageSections = document.querySelectorAll('.page-section');
             const mobileToggle = document.getElementById('mobile-toggle');
@@ -524,6 +589,9 @@
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 if (navMenu) navMenu.classList.remove('open');
+                
+                // Redraw canvases on tab change so proper dimensions calculate
+                setTimeout(initCanvases, 50);
             }
 
             window.addEventListener('hashchange', handleRoute);
