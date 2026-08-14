@@ -216,8 +216,8 @@
         /* Gold-Only Highlight Background */
         .photo-slot {
             width: 100%;
-            min-height: 320px;
-            background-color: rgba(200, 169, 110, 0.1);
+            height: 380px; /* Fixed height for uniform container framing */
+            background-color: #030805;
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -230,14 +230,14 @@
             -webkit-tap-highlight-color: rgba(200, 169, 110, 0.3);
         }
         .photo-slot:hover {
-            background-color: rgba(200, 169, 110, 0.15);
+            background-color: rgba(200, 169, 110, 0.05);
         }
         .photo-slot:active, .photo-slot:focus {
-            background-color: rgba(200, 169, 110, 0.25) !important;
+            background-color: rgba(200, 169, 110, 0.1) !important;
             outline: none;
         }
 
-        /* Default cover style for untouched photos */
+        /* Default cover style for untouched photos (keeps them edge-to-edge) */
         .photo-slot img {
             width: 100%;
             height: 100%;
@@ -247,10 +247,13 @@
             z-index: 2;
         }
 
-        /* Contain fit style for photos that need to fit entirely inside the frame */
+        /* Fully contained fit style for photos that need to fit entirely inside the frame */
         .photo-slot img.contain-fit {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            background-color: rgba(4, 13, 7, 0.6);
+            object-position: center;
+            background-color: #030805;
         }
 
         .placeholder-frame-text {
@@ -339,7 +342,7 @@
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper fade-in" style="margin-top: 2rem;">
-                    <div class="photo-slot hero-slot" style="min-height: 500px;">
+                    <div class="photo-slot hero-slot" style="min-height: 500px; height: auto;">
                         <img src="Soaring%20the%20Seas.jpg" class="contain-fit" alt="Featured Photography" onerror="this.style.display='none';">
                     </div>
                 </div>
