@@ -213,11 +213,11 @@
             margin-bottom: 0.75rem;
         }
         
-        /* Gold-Only Highlight Background */
+        /* RESTORED ORIGINAL GOLD-TINT HIGHLIGHT BACKGROUND */
         .photo-slot {
             width: 100%;
-            height: 380px; /* Fixed height for uniform container framing */
-            background-color: #030805;
+            min-height: 320px;
+            background-color: rgba(200, 169, 110, 0.1);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -230,14 +230,14 @@
             -webkit-tap-highlight-color: rgba(200, 169, 110, 0.3);
         }
         .photo-slot:hover {
-            background-color: rgba(200, 169, 110, 0.05);
+            background-color: rgba(200, 169, 110, 0.15);
         }
         .photo-slot:active, .photo-slot:focus {
-            background-color: rgba(200, 169, 110, 0.1) !important;
+            background-color: rgba(200, 169, 110, 0.25) !important;
             outline: none;
         }
 
-        /* Default cover style for untouched photos (keeps them edge-to-edge) */
+        /* Default cover style for vertical/untouched photos */
         .photo-slot img {
             width: 100%;
             height: 100%;
@@ -247,13 +247,10 @@
             z-index: 2;
         }
 
-        /* Fully contained fit style for photos that need to fit entirely inside the frame */
+        /* Contain fit strictly applied ONLY to horizontal/landscape layout photos needing framing adjustment */
         .photo-slot img.contain-fit {
-            width: 100%;
-            height: 100%;
             object-fit: contain;
-            object-position: center;
-            background-color: #030805;
+            background-color: rgba(4, 13, 7, 0.6);
         }
 
         .placeholder-frame-text {
@@ -342,7 +339,7 @@
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper fade-in" style="margin-top: 2rem;">
-                    <div class="photo-slot hero-slot" style="min-height: 500px; height: auto;">
+                    <div class="photo-slot hero-slot" style="min-height: 500px;">
                         <img src="Soaring%20the%20Seas.jpg" class="contain-fit" alt="Featured Photography" onerror="this.style.display='none';">
                     </div>
                 </div>
@@ -360,7 +357,7 @@
                         <h3 class="entry-title">Golden Mosaic Altar</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">GOLDEN MOSAIC ALTAR</span>
-                            <img src="Golden%20Mosaic%20Altar.jpg" class="contain-fit" alt="Golden Mosaic Altar" onerror="this.style.display='none';">
+                            <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Golden statue framed centrally inside an ornate mosaic sanctuary — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -368,7 +365,7 @@
                         <h3 class="entry-title">Sequential Arches</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SEQUENTIAL ARCHES</span>
-                            <img src="Sequential%20Arches.jpeg" class="contain-fit" alt="Sequential Arches" onerror="this.style.display='none';">
+                            <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Low-angle repeating stone arches framing a courtyard — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -446,7 +443,7 @@
                         <h3 class="entry-title">Solitary Reflection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SOLITARY REFLECTION</span>
-                            <img src="Solitary%20Reflection.jpg" class="contain-fit" alt="Solitary Reflection" onerror="this.style.display='none';">
+                            <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Figure sitting alone on a bench along a coastal walkway — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -454,7 +451,7 @@
                         <h3 class="entry-title">Angler on The Jetty</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLER ON THE JETTY</span>
-                            <img src="Angler%20on%20The%20Jetty.jpeg" class="contain-fit" alt="Angler on The Jetty" onerror="this.style.display='none';">
+                            <img src="Angler%20on%20The%20Jetty.jpeg" alt="Angler on The Jetty" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Silhouette of a hooded angler on large coastal rocks — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -483,7 +480,7 @@
                         <h3 class="entry-title">Veiled Statue</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">VEILED STATUE</span>
-                            <img src="Veiled%20Statue.jpg" class="contain-fit" alt="Veiled Statue" onerror="this.style.display='none';">
+                            <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Monochrome stone sculpture of a figure holding a child in low-key light — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -499,7 +496,7 @@
                         <h3 class="entry-title">Resting Figure in Light</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">RESTING FIGURE IN LIGHT</span>
-                            <img src="Resting%20Figure%20in%20Light.jpeg" class="contain-fit" alt="Resting Figure in Light" onerror="this.style.display='none';">
+                            <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Sculpted reclining figure illuminated by a diagonal beam of light — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -507,7 +504,7 @@
                         <h3 class="entry-title">Arch and Intersection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ARCH AND INTERSECTION</span>
-                            <img src="Arch%20and%20Intersection.jpg" class="contain-fit" alt="Arch and Intersection" onerror="this.style.display='none';">
+                            <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Stone memorial arch framed behind an out-of-focus traffic light — Sony a6100, 16-50mm lens</p>
                     </div>
