@@ -228,12 +228,13 @@
             color: var(--text-muted);
         }
 
-        /* UNIFORM GRID SYSTEM: Perfectly aligned cards with consistent height formatting */
+        /* GRID SYSTEM: Cards adjust naturally without giant vertical gaps */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2.5rem;
+            align-items: start;
         }
 
         .photo-entry {
@@ -245,7 +246,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            height: auto;
         }
         .photo-entry:hover {
             border-color: var(--accent-gold);
@@ -258,6 +259,7 @@
             font-size: 1.35rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
+            text-align: center;
         }
 
         @keyframes subtleFadeInUp {
@@ -266,15 +268,14 @@
         }
 
         /* 
-           TRUE-TO-SIZE CONTAINER & NO-CROP GUARANTEE:
-           By setting a uniform container height and using `object-fit: contain`, 
-           vertical and horizontal images fit naturally within the exact same frame proportions 
-           without ever clipping or cutting off content.
+           STRICT PHOTO-SLOT WRAPPER:
+           Allows the frame to collapse tightly around landscape or portrait images.
         */
         .photo-slot {
             width: 100%;
-            height: 380px;
-            background-color: rgba(0, 0, 0, 0.35);
+            height: auto;
+            min-height: 200px;
+            background-color: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -283,16 +284,14 @@
             overflow: hidden;
             border-radius: 6px;
             animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-            padding: 0.5rem;
             box-sizing: border-box;
         }
 
         .photo-slot img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
+            width: 100%;
             height: auto;
-            object-fit: contain; /* COMPLETELY PREVENTS ANY CROPPING OR CUTTING OFF */
+            max-height: 500px;
+            object-fit: contain;
             display: block;
             position: relative;
             z-index: 2;
@@ -316,6 +315,8 @@
             position: absolute;
             z-index: 1;
             pointer-events: none;
+            padding: 2rem 1rem;
+            text-align: center;
         }
 
         .contact-details-grid {
@@ -513,12 +514,12 @@
         <!-- HOME -->
         <section id="home" class="page-section smoky-forest-bg active">
             <div class="container hero-container" style="padding-bottom: 5rem;">
-                <div class="hero-header">
+                <div class="hero-header" style="text-align: center;">
                     <h1 class="artist-name" style="font-size: 3.25rem;">MAKARIY LOMYKIN</h1>
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper" style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    <div class="photo-slot" style="height: 480px;">
+                    <div class="photo-slot">
                         <img src="Soaring%20the%20Seas.jpg" alt="Featured Photography" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                     </div>
                 </div>
@@ -539,7 +540,7 @@
                             <span class="placeholder-frame-text">ECHO</span>
                             <img src="Echo.jpeg" alt="Echo" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Black and White Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Best Black and White Photo — 2026 Talon Award</p>
                     </div>
 
                     <div class="photo-entry">
@@ -548,7 +549,7 @@
                             <span class="placeholder-frame-text">WHERE THE LIGHT LINGERS</span>
                             <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Color Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Best Color Photo — 2026 Talon Award</p>
                     </div>
 
                     <div class="photo-entry">
@@ -557,7 +558,7 @@
                             <span class="placeholder-frame-text">INTO THE DEEP</span>
                             <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Nature Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Best Nature Photo — 2026 Talon Award</p>
                     </div>
                 </div>
             </div>
@@ -577,7 +578,7 @@
                             <span class="placeholder-frame-text">ANGLED BEAMS</span>
                             <img src="Angled%20Beams.jpg" alt="Angled Beams" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Golden Mosaic Altar</h3>
@@ -585,7 +586,7 @@
                             <span class="placeholder-frame-text">GOLDEN MOSAIC ALTAR</span>
                             <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Sequential Arches</h3>
@@ -593,7 +594,7 @@
                             <span class="placeholder-frame-text">SEQUENTIAL ARCHES</span>
                             <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Clock Tower Angle</h3>
@@ -601,7 +602,7 @@
                             <span class="placeholder-frame-text">CLOCK TOWER ANGLE</span>
                             <img src="Clock%20Tower%20Angle.jpg" alt="Clock Tower Angle" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -621,7 +622,7 @@
                             <span class="placeholder-frame-text">WHERE THE LIGHT LINGERS</span>
                             <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens — Award Winner</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Sculpted Embrace</h3>
@@ -629,7 +630,7 @@
                             <span class="placeholder-frame-text">SCULPTED EMBRACE</span>
                             <img src="Sculpted%20Embrace.jpg" alt="Sculpted Embrace" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Blue Dusk Reflection</h3>
@@ -637,7 +638,7 @@
                             <span class="placeholder-frame-text">BLUE DUSK REFLECTION</span>
                             <img src="Blue%20Dusk%20Reflection.jpeg" alt="Blue Dusk Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Breakwater Waves</h3>
@@ -645,7 +646,7 @@
                             <span class="placeholder-frame-text">BREAKWATER WAVES</span>
                             <img src="Breakwater%20Waves.png" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -665,7 +666,7 @@
                             <span class="placeholder-frame-text">ANGLER ON THE JETTY</span>
                             <img src="Angler%20on%20The%20Jetty.jpeg" alt="Angler on The Jetty" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Solitary Reflection</h3>
@@ -673,7 +674,7 @@
                             <span class="placeholder-frame-text">SOLITARY REFLECTION</span>
                             <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Into The Deep</h3>
@@ -681,12 +682,12 @@
                             <span class="placeholder-frame-text">INTO THE DEEP</span>
                             <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens — Award Winner</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Still Moment</h3>
-                        <div class="photo-slot"><span class="placeholder-frame-text">STILL MOMENT</span></div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <div class="photo-slot" style="min-height: 250px;"><span class="placeholder-frame-text">STILL MOMENT</span></div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -706,7 +707,7 @@
                             <span class="placeholder-frame-text">ECHO</span>
                             <img src="Echo.jpeg" alt="Echo" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens — Award Winner</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Veiled Statue</h3>
@@ -714,7 +715,7 @@
                             <span class="placeholder-frame-text">VEILED STATUE</span>
                             <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Resting Figure in Light</h3>
@@ -722,7 +723,7 @@
                             <span class="placeholder-frame-text">RESTING FIGURE IN LIGHT</span>
                             <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                     <div class="photo-entry">
                         <h3 class="entry-title">Arch and Intersection</h3>
@@ -730,7 +731,7 @@
                             <span class="placeholder-frame-text">ARCH AND INTERSECTION</span>
                             <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem; text-align: center;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -758,7 +759,7 @@
                     <div class="about-photo-column">
                         <div class="photo-entry">
                             <h3 class="entry-title">MAKARIY LOMYKIN</h3>
-                            <div class="photo-slot" style="height: 380px;">
+                            <div class="photo-slot" style="min-height: 380px;">
                                 <span class="placeholder-frame-text">PORTRAIT</span>
                             </div>
                         </div>
