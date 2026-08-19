@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* Theme Variables: Dark (Forest Emerald & Gold) & Light (Fine-Art Gallery Paper & Gold) */
+        /* Theme Variables */
         :root[data-theme="dark"] {
             --bg-color: #040d07;             
             --bg-secondary: #0b1f13;       
@@ -57,7 +57,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Header Styling */
         .site-header {
             background-color: var(--header-bg);
             border-bottom: 1px solid var(--border-color);
@@ -90,7 +89,6 @@
             gap: 1.5rem;
         }
 
-        /* Clean Classic Hamburger Mobile Toggle (3 Gold Lines) */
         .mobile-toggle {
             display: none;
             background: none;
@@ -113,7 +111,6 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* Highly Visible & Styled Theme Toggle Button */
         .theme-toggle-btn {
             background-color: var(--theme-btn-bg);
             border: 1.5px solid var(--accent-gold);
@@ -156,7 +153,6 @@
             color: var(--accent-gold);
         }
 
-        /* Responsive Navbar breakpoint for mobile */
         @media (max-width: 1024px) {
             .mobile-toggle {
                 display: flex;
@@ -180,7 +176,6 @@
             }
         }
 
-        /* Visibility Fixes */
         .page-section { display: none; }
         .page-section.active { display: block !important; }
 
@@ -190,7 +185,6 @@
             padding: 3rem 2rem;
         }
 
-        /* ATMOSPHERIC FOREST BACKGROUND */
         .smoky-forest-bg {
             position: relative;
             background-color: var(--bg-color);
@@ -223,7 +217,6 @@
             z-index: 2;
         }
 
-        /* Typography & Titles */
         .project-title, .artist-name, .about-name, .contact-main-heading {
             font-family: 'Cormorant Garamond', serif;
             color: var(--accent-gold);
@@ -235,11 +228,11 @@
             color: var(--text-muted);
         }
 
-        /* TRUE-TO-SIZE HIERARCHICAL LAYOUT SYSTEM (WOW -> WOW -> Interesting -> Interesting -> Supporting) */
-        .portfolio-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+        /* UNIFORM GRID SYSTEM: Perfectly aligned cards with consistent height formatting */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
             margin-top: 2.5rem;
         }
 
@@ -250,6 +243,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .photo-entry:hover {
             border-color: var(--accent-gold);
@@ -269,10 +265,16 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Base photo slot container */
+        /* 
+           TRUE-TO-SIZE CONTAINER & NO-CROP GUARANTEE:
+           By setting a uniform container height and using `object-fit: contain`, 
+           vertical and horizontal images fit naturally within the exact same frame proportions 
+           without ever clipping or cutting off content.
+        */
         .photo-slot {
             width: 100%;
-            background-color: rgba(200, 169, 110, 0.1);
+            height: 380px;
+            background-color: rgba(0, 0, 0, 0.35);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -281,50 +283,16 @@
             overflow: hidden;
             border-radius: 6px;
             animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            padding: 0.5rem;
+            box-sizing: border-box;
         }
 
-        /* Tier 1: WOW Pieces (Max Visual Impact, generous natural height, never cropped awkwardly) */
-        .tier-wow {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .tier-wow .photo-slot {
-            height: 520px;
-        }
-
-        /* Tier 2: Interesting Pieces (Medium prominence) */
-        .tier-interesting {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        .tier-interesting .photo-slot {
-            height: 400px;
-        }
-
-        /* Tier 3: Supporting Work Grid (Balanced two-column cards) */
-        .supporting-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .supporting-grid .photo-slot {
-            height: 280px;
-        }
-
-        /* Responsive height adjustments for smaller screens */
-        @media (max-width: 768px) {
-            .tier-wow .photo-slot { height: 320px; }
-            .tier-interesting .photo-slot { height: 280px; }
-        }
-
-        /* Image Display Rules: object-fit contain for true-to-size non-cropped clarity, cover where appropriate */
         .photo-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Prevents cutting out important photo elements */
-            background-color: rgba(0,0,0,0.2);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* COMPLETELY PREVENTS ANY CROPPING OR CUTTING OFF */
             display: block;
             position: relative;
             z-index: 2;
@@ -350,7 +318,6 @@
             pointer-events: none;
         }
 
-        /* Contact Details & Stylish Copy-to-Clipboard Buttons */
         .contact-details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -410,7 +377,6 @@
             color: var(--accent-gold);
         }
 
-        /* Contact Form Styles */
         .contact-form {
             display: grid;
             gap: 1.25rem;
@@ -475,7 +441,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* About Section Styling */
         .about-story p {
             color: var(--text-light);
             line-height: 1.75;
@@ -502,7 +467,6 @@
             line-height: 1;
         }
 
-        /* Footer */
         .site-footer {
             border-top: 1px solid var(--border-color);
             text-align: center;
@@ -553,8 +517,8 @@
                     <h1 class="artist-name" style="font-size: 3.25rem;">MAKARIY LOMYKIN</h1>
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
-                <div class="hero-photo-wrapper" style="margin-top: 2rem;">
-                    <div class="photo-slot hero-slot" style="min-height: 450px;">
+                <div class="hero-photo-wrapper" style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div class="photo-slot" style="height: 480px;">
                         <img src="Soaring%20the%20Seas.jpg" alt="Featured Photography" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                     </div>
                 </div>
@@ -568,35 +532,32 @@
                     <h1 class="project-title">Recognition & Awards</h1>
                     <p class="project-description">Showcasing award-winning photography and significant pieces honored by the Talon Awards.</p>
                 </header>
-                <div class="portfolio-layout">
-                    <!-- WOW Tier 1 -->
-                    <div class="photo-entry tier-wow">
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Echo</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ECHO</span>
                             <img src="Echo.jpeg" alt="Echo" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Best Black and White Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Black and White Photo — 2026 Talon Award</p>
                     </div>
 
-                    <!-- WOW Tier 1 -->
-                    <div class="photo-entry tier-wow">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Where The Light Lingers</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">WHERE THE LIGHT LINGERS</span>
                             <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Best Color Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Color Photo — 2026 Talon Award</p>
                     </div>
 
-                    <!-- Interesting Tier 2 -->
-                    <div class="photo-entry tier-interesting">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Into The Deep</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">INTO THE DEEP</span>
                             <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Best Nature Photo — 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Best Nature Photo — 2026 Talon Award</p>
                     </div>
                 </div>
             </div>
@@ -607,47 +568,40 @@
             <div class="container">
                 <header class="project-header">
                     <h1 class="project-title">01 — Where Light Finds Form</h1>
-                    <p class="project-description">A study of light, structure, and natural form, featuring "Angled Beams" as the centerpiece.</p>
+                    <p class="project-description">A study of light, structure, and natural form.</p>
                 </header>
-                <div class="portfolio-layout">
-                    <!-- WOW Piece -->
-                    <div class="photo-entry tier-wow">
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Angled Beams</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLED BEAMS</span>
                             <img src="Angled%20Beams.jpg" alt="Angled Beams" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Interesting Piece -->
-                    <div class="photo-entry tier-interesting">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Golden Mosaic Altar</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">GOLDEN MOSAIC ALTAR</span>
                             <img src="Golden%20Mosaic%20Altar.jpg" alt="Golden Mosaic Altar" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Supporting Work Grid -->
-                    <div class="supporting-grid">
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Sequential Arches</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">SEQUENTIAL ARCHES</span>
-                                <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Sequential Arches</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">SEQUENTIAL ARCHES</span>
+                            <img src="Sequential%20Arches.jpeg" alt="Sequential Arches" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Clock Tower Angle</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">CLOCK TOWER ANGLE</span>
-                                <img src="Clock%20Tower%20Angle.jpg" alt="Clock Tower Angle" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Clock Tower Angle</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">CLOCK TOWER ANGLE</span>
+                            <img src="Clock%20Tower%20Angle.jpg" alt="Clock Tower Angle" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -658,47 +612,40 @@
             <div class="container">
                 <header class="project-header">
                     <h1 class="project-title">02 — A Study in Color</h1>
-                    <p class="project-description">An exploration of color as a visual language, anchored by "Where The Light Lingers".</p>
+                    <p class="project-description">An exploration of color as a visual language.</p>
                 </header>
-                <div class="portfolio-layout">
-                    <!-- WOW Piece -->
-                    <div class="photo-entry tier-wow">
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Where The Light Lingers</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">WHERE THE LIGHT LINGERS</span>
                             <img src="Where%20The%20Light%20Lingers.jpg" alt="Where The Light Lingers" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens — Best Color Photo, 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
                     </div>
-
-                    <!-- Interesting Piece -->
-                    <div class="photo-entry tier-interesting">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Sculpted Embrace</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SCULPTED EMBRACE</span>
                             <img src="Sculpted%20Embrace.jpg" alt="Sculpted Embrace" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Supporting Work Grid -->
-                    <div class="supporting-grid">
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Blue Dusk Reflection</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">BLUE DUSK REFLECTION</span>
-                                <img src="Blue%20Dusk%20Reflection.jpeg" alt="Blue Dusk Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Blue Dusk Reflection</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">BLUE DUSK REFLECTION</span>
+                            <img src="Blue%20Dusk%20Reflection.jpeg" alt="Blue Dusk Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Breakwater Waves</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">BREAKWATER WAVES</span>
-                                <img src="Breakwater%20Waves.png" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Breakwater Waves</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">BREAKWATER WAVES</span>
+                            <img src="Breakwater%20Waves.png" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -709,44 +656,37 @@
             <div class="container">
                 <header class="project-header">
                     <h1 class="project-title">03 — Quiet Observations</h1>
-                    <p class="project-description">A collection of moments overlooked, highlighting "Angler on The Jetty" as the focal point.</p>
+                    <p class="project-description">A collection of moments overlooked.</p>
                 </header>
-                <div class="portfolio-layout">
-                    <!-- WOW Piece -->
-                    <div class="photo-entry tier-wow">
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Angler on The Jetty</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ANGLER ON THE JETTY</span>
                             <img src="Angler%20on%20The%20Jetty.jpeg" alt="Angler on The Jetty" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Interesting Piece -->
-                    <div class="photo-entry tier-interesting">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Solitary Reflection</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SOLITARY REFLECTION</span>
                             <img src="Solitary%20Reflection.jpg" alt="Solitary Reflection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Supporting Work Grid (Including Into The Deep as requested) -->
-                    <div class="supporting-grid">
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Into The Deep</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">INTO THE DEEP</span>
-                                <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens — Best Nature Photo, 2026 Talon Award</p>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Into The Deep</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">INTO THE DEEP</span>
+                            <img src="Into%20The%20Deep.jpg" alt="Into The Deep" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Still Moment</h3>
-                            <div class="photo-slot"><span class="placeholder-frame-text">STILL MOMENT</span></div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
-                        </div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Still Moment</h3>
+                        <div class="photo-slot"><span class="placeholder-frame-text">STILL MOMENT</span></div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -757,47 +697,40 @@
             <div class="container">
                 <header class="project-header">
                     <h1 class="project-title">04 — Between the Seen and Unseen</h1>
-                    <p class="project-description">An exploration of atmosphere and ambiguity, led by the award-winning "Echo".</p>
+                    <p class="project-description">An exploration of atmosphere and ambiguity.</p>
                 </header>
-                <div class="portfolio-layout">
-                    <!-- WOW Piece -->
-                    <div class="photo-entry tier-wow">
+                <div class="portfolio-grid">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Echo</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">ECHO</span>
                             <img src="Echo.jpeg" alt="Echo" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens — Best Black and White Photo, 2026 Talon Award</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens — Award Winner</p>
                     </div>
-
-                    <!-- Interesting Piece -->
-                    <div class="photo-entry tier-interesting">
+                    <div class="photo-entry">
                         <h3 class="entry-title">Veiled Statue</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">VEILED STATUE</span>
                             <img src="Veiled%20Statue.jpg" alt="Veiled Statue" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
-
-                    <!-- Supporting Work Grid -->
-                    <div class="supporting-grid">
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Resting Figure in Light</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">RESTING FIGURE IN LIGHT</span>
-                                <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Resting Figure in Light</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">RESTING FIGURE IN LIGHT</span>
+                            <img src="Resting%20Figure%20in%20Light.jpeg" alt="Resting Figure in Light" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
-                        <div class="photo-entry">
-                            <h3 class="entry-title">Arch and Intersection</h3>
-                            <div class="photo-slot">
-                                <span class="placeholder-frame-text">ARCH AND INTERSECTION</span>
-                                <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
-                            </div>
-                            <p class="entry-subtext">Sony a6100, 16-50mm lens</p>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
+                    </div>
+                    <div class="photo-entry">
+                        <h3 class="entry-title">Arch and Intersection</h3>
+                        <div class="photo-slot">
+                            <span class="placeholder-frame-text">ARCH AND INTERSECTION</span>
+                            <img src="Arch%20and%20Intersection.jpg" alt="Arch and Intersection" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
+                        <p class="entry-subtext" style="margin-top: 0.75rem;">Sony a6100, 16-50mm lens</p>
                     </div>
                 </div>
             </div>
@@ -806,7 +739,7 @@
         <!-- ABOUT -->
         <section id="about" class="page-section smoky-forest-bg">
             <div class="container" style="padding-bottom: 5rem;">
-                <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
+                <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; align-items: center;">
                     <div class="about-text-column">
                         <h1 class="about-name">MAKARIY LOMYKIN</h1>
                         <div class="about-story">
@@ -825,7 +758,7 @@
                     <div class="about-photo-column">
                         <div class="photo-entry">
                             <h3 class="entry-title">MAKARIY LOMYKIN</h3>
-                            <div class="photo-slot" style="height: 350px;">
+                            <div class="photo-slot" style="height: 380px;">
                                 <span class="placeholder-frame-text">PORTRAIT</span>
                             </div>
                         </div>
@@ -904,7 +837,6 @@
     </footer>
 
     <script>
-        // Global Clipboard Copy Function with Visual Feedback
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = btnElement.textContent;
@@ -924,7 +856,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-            // Theme Toggle Logic
             const rootElement = document.documentElement;
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
@@ -954,7 +885,6 @@
                 }
             }
 
-            // Navigation Routing
             const pageSections = document.querySelectorAll('.page-section');
             const mobileToggle = document.getElementById('mobile-toggle');
             const navMenu = document.getElementById('nav-menu');
@@ -999,7 +929,6 @@
                 });
             }
 
-            // Web3Forms AJAX Submission Handler with Fade-in and Reset
             const inquiryForm = document.getElementById('inquiry-form');
             const formSuccess = document.getElementById('form-success');
             if (inquiryForm) {
