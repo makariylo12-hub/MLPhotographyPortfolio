@@ -216,7 +216,7 @@
             color: var(--text-muted);
         }
 
-        /* ORGANIZED GRID SYSTEM */
+        /* GRID SYSTEM */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -234,7 +234,6 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centers the image frame nicely inside the card */
         }
         .photo-entry:hover {
             border-color: var(--accent-gold);
@@ -247,8 +246,6 @@
             font-size: 1.35rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
-            width: 100%;
-            text-align: left;
         }
 
         @keyframes subtleFadeInUp {
@@ -256,28 +253,26 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* TRUE-TO-SIZE SNUG CONTAINER: Wraps precisely to the image proportions */
+        /* FIXED ASPECT RATIO PHOTO CONTAINER (Snug & Uniform) */
         .photo-slot {
-            width: auto;
-            max-width: 100%;
+            width: 100%;
+            aspect-ratio: 4 / 3;
             background-color: rgba(0, 0, 0, 0.35);
             border: 1px solid var(--border-color);
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
             border-radius: 6px;
             animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-            padding: 0.4rem;
             box-sizing: border-box;
         }
 
         .photo-slot img {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 450px; /* Keeps individual images from getting overly tall */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
             position: relative;
             z-index: 2;
@@ -288,7 +283,7 @@
             opacity: 1;
         }
         .photo-slot:hover img {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .placeholder-frame-text {
@@ -301,11 +296,6 @@
             position: absolute;
             z-index: 1;
             pointer-events: none;
-        }
-
-        .entry-subtext {
-            width: 100%;
-            text-align: left;
         }
 
         .contact-details-grid {
