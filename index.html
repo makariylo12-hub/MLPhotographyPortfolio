@@ -30,11 +30,11 @@
         }
 
         :root[data-theme="light"] {
-            --bg-color: #f7f5f0; /* Warm Gallery Paper Base */
-            --bg-secondary: #ffffff; /* Clean White Card Base */
-            --accent-gold: #9e7b3b; /* Deep Sophisticated Visible Gold */
-            --text-light: #1a231c; /* Deep Charcoal Text */
-            --text-muted: #5c6e61; /* Muted Earthy Sage Text */
+            --bg-color: #f7f5f0;             /* Warm Gallery Paper Base */
+            --bg-secondary: #ffffff;       /* Clean White Card Base */
+            --accent-gold: #9e7b3b;        /* Deep Sophisticated Visible Gold */
+            --text-light: #1a231c;         /* Deep Charcoal Text */
+            --text-muted: #5c6e61;         /* Muted Earthy Sage Text */
             --border-color: rgba(158, 123, 59, 0.4); /* Refined Gold Border Accent */
             --header-bg: rgba(247, 245, 240, 0.95);
             --mobile-menu-bg: rgba(247, 245, 240, 0.98);
@@ -275,7 +275,7 @@
 
         .photo-slot {
             width: 100%;
-            min-height: 320px;
+            height: 280px; /* Uniform consistent container frame height */
             background-color: rgba(200, 169, 110, 0.1);
             border: 1px solid var(--border-color);
             display: flex;
@@ -297,25 +297,22 @@
             outline: none;
         }
 
-        /* Subtle Image Load Transition */
+        /* Subtle Image Load Transition & Uniform Crop Fill */
         .photo-slot img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Ensures every photo completely fills the frame uniformly */
             display: block;
             position: relative;
             z-index: 2;
             opacity: 0;
-            transition: opacity 0.6s ease-in-out;
+            transition: opacity 0.6s ease-in-out, transform 0.4s ease;
         }
         .photo-slot img.loaded {
             opacity: 1;
         }
-
-        /* Contain fit strictly applied ONLY to horizontal/landscape layout photos */
-        .photo-slot img.contain-fit {
-            object-fit: contain;
-            background-color: rgba(4, 13, 7, 0.5);
+        .photo-slot:hover img {
+            transform: scale(1.03); /* Subtle zoom effect on hover for high professionalism */
         }
 
         .placeholder-frame-text {
@@ -532,8 +529,8 @@
                     <p class="artist-subtitle" style="color: var(--text-muted); letter-spacing: 4px;">PHOTOGRAPHY PORTFOLIO</p>
                 </div>
                 <div class="hero-photo-wrapper" style="margin-top: 2rem;">
-                    <div class="photo-slot hero-slot" style="min-height: 500px;">
-                        <img src="Soaring%20the%20Seas.jpg" class="contain-fit" alt="Featured Photography" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
+                    <div class="photo-slot hero-slot" style="min-height: 450px;">
+                        <img src="Soaring%20the%20Seas.jpg" alt="Featured Photography" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                     </div>
                 </div>
             </div>
@@ -593,7 +590,7 @@
                         <h3 class="entry-title">Sculpted Embrace</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">SCULPTED EMBRACE</span>
-                            <img src="Sculpted%20Embrace.jpg" class="contain-fit" alt="Sculpted Embrace" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
+                            <img src="Sculpted%20Embrace.jpg" alt="Sculpted Embrace" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Sloping cobblestone street with blue flowerpots toward a tree-covered hill — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -617,7 +614,7 @@
                         <h3 class="entry-title">Breakwater Waves</h3>
                         <div class="photo-slot">
                             <span class="placeholder-frame-text">BREAKWATER WAVES</span>
-                            <img src="Breakwater%20Waves.png" class="contain-fit" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
+                            <img src="Breakwater%20Waves.png" alt="Breakwater Waves" onload="this.classList.add('loaded')" onerror="this.style.display='none';">
                         </div>
                         <p class="entry-subtext">Crashing ocean water and dark rocks against an orange sunset — Sony a6100, 16-50mm lens</p>
                     </div>
@@ -773,6 +770,7 @@
                             </div>
                         </div>
 
+                        <!-- Web3Forms Connected Contact Form -->
                         <form class="contact-form" id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="c5d86ba5-dbc6-472f-bc1f-6246928e8059">
                             
@@ -931,4 +929,3 @@
     </script>
 </body>
 </html>
-
