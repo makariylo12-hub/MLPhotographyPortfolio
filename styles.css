@@ -216,10 +216,10 @@
             color: var(--text-muted);
         }
 
-        /* GRID SYSTEM */
+        /* ORGANIZED GRID SYSTEM */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2.5rem;
             align-items: start;
@@ -234,7 +234,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center; /* Centers the image frame nicely inside the card */
         }
         .photo-entry:hover {
             border-color: var(--accent-gold);
@@ -247,6 +247,8 @@
             font-size: 1.35rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
+            width: 100%;
+            text-align: left;
         }
 
         @keyframes subtleFadeInUp {
@@ -254,27 +256,28 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* TRUE-TO-SIZE PHOTO CONTAINER */
+        /* TRUE-TO-SIZE SNUG CONTAINER: Wraps precisely to the image proportions */
         .photo-slot {
-            width: 100%;
+            width: auto;
+            max-width: 100%;
             background-color: rgba(0, 0, 0, 0.35);
             border: 1px solid var(--border-color);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
             border-radius: 6px;
             animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-            padding: 0.5rem;
+            padding: 0.4rem;
             box-sizing: border-box;
         }
 
         .photo-slot img {
-            width: 100%;
+            width: auto;
             height: auto;
-            max-height: 600px;
-            object-fit: contain;
+            max-width: 100%;
+            max-height: 450px; /* Keeps individual images from getting overly tall */
             display: block;
             position: relative;
             z-index: 2;
@@ -298,6 +301,11 @@
             position: absolute;
             z-index: 1;
             pointer-events: none;
+        }
+
+        .entry-subtext {
+            width: 100%;
+            text-align: left;
         }
 
         .contact-details-grid {
