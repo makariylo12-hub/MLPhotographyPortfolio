@@ -223,8 +223,10 @@
             gap: 2rem;
             margin-top: 2.5rem;
             align-items: start;
+            justify-items: center;
         }
 
+        /* 1. OUTER CARD (SNUG WRAP AROUND INNER CONTENT) */
         .photo-entry {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -232,8 +234,13 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            display: flex;
+            
+            display: inline-flex;
             flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
         .photo-entry:hover {
             border-color: var(--accent-gold);
@@ -246,6 +253,8 @@
             font-size: 1.35rem;
             margin-top: 0;
             margin-bottom: 0.75rem;
+            text-align: center;
+            width: 100%;
         }
 
         @keyframes subtleFadeInUp {
@@ -253,25 +262,28 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* PHOTO CONTAINER WRAPS DIRECTLY AROUND WHATEVER SIZE THE IMAGE IS */
+        /* 2. INNER SLOT (STRICT WRAP AROUND PHOTO DIMS - NO GAPS) */
         .photo-slot {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            display: inline-block;
+            width: auto;
+            height: auto;
             background-color: transparent;
-            border: none; /* Removed the background container border completely */
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 0;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
-        /* THE GOLDEN BUBBLE/BORDER LIVES DIRECTLY ON THE IMAGE ITSELF NOW */
+        /* 3. PHOTO DISPLAY */
         .photo-slot img {
+            display: block;
             max-width: 100%;
             height: auto;
-            display: block;
-            border: 2px solid var(--accent-gold); /* Golden border hugs image dimensions exactly */
-            border-radius: 8px; /* Curves the image's golden border */
-            box-sizing: border-box;
+            object-fit: contain;
             z-index: 2;
             opacity: 0;
             transition: opacity 0.6s ease-in-out, transform 0.4s ease;
