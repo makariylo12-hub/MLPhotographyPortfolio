@@ -225,19 +225,19 @@
             align-items: start;
         }
 
+        /* PHOTO ENTRY CARD NOW ACTS AS THE SNUG GOLDEN BUBBLE */
         .photo-entry {
             background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--accent-gold);
             padding: 1.25rem;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
         .photo-entry:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 6px 25px rgba(200, 169, 110, 0.15);
+            box-shadow: 0 6px 25px rgba(200, 169, 110, 0.25);
         }
 
         .entry-title {
@@ -253,18 +253,18 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* FIXED ASPECT RATIO PHOTO CONTAINER (Snug & Uniform Frame) */
+        /* INNER PHOTO SLOT KEEPS THE ASPECT RATIO & CROPS THE IMAGE FLUSH TO CARD */
         .photo-slot {
             width: 100%;
             aspect-ratio: 4 / 3;
             background-color: rgba(0, 0, 0, 0.35);
-            border: 2px solid var(--accent-gold); /* Golden bubble frame outline */
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            border-radius: 12px; /* Smooth corners for your golden bubble */
+            border-radius: 6px;
             animation: subtleFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
             box-sizing: border-box;
         }
@@ -275,7 +275,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Snug fit that fills the golden bubble cleanly without distorting */
+            object-fit: cover;
             z-index: 2;
             opacity: 0;
             transition: opacity 0.6s ease-in-out, transform 0.4s ease;
